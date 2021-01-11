@@ -126,7 +126,7 @@ MonoBehaviour:
     m_ActionId: 29929da1-8a52-473c-8d74-3ef8ec7ecae9
     m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Joystick
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2077594692bff7440addf14c754f92a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxMovementSpeedInUnitPerSec: 10
 --- !u!1 &7772981648562408374
 GameObject:
   m_ObjectHideFlags: 0
