@@ -43,7 +43,7 @@ public class PlayerAttack : MonoBehaviour
     private void Fire()
     {
         GameObject newProjectile = Instantiate(this.projectile, this.weaponEndPoint);
-        newProjectile.GetComponent<ProjectileMovement>().applySpeed(this.effectivePower);
+        newProjectile.GetComponent<ProjectileMovement>().ApplySpeed(this.effectivePower);
         this.isChargingPower = false;
         this.effectivePower = 0;
     }

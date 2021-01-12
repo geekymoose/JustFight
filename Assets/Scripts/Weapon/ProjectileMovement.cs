@@ -11,7 +11,7 @@ public class ProjectileMovement : MonoBehaviour
         Assert.IsNotNull(this.rg, "Missing asset (Rigidbody2D)");
     }
 
-    public void applySpeed(float speedInUnityUnitsPerSec)
+    public void ApplySpeed(float speedInUnityUnitsPerSec)
     {
         Vector2 forward = new Vector2(this.transform.up.x, this.transform.up.y);
         this.rg.velocity = forward * speedInUnityUnitsPerSec;

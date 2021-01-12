@@ -3,35 +3,39 @@ using UnityEngine.Assertions;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("Event thrown when the player is killed")]
+    private GameEvent playerKilledEvent;
 
     [SerializeField]
-    private float maxHealth;
+    [Tooltip("Amount of life the player has when he is 100% health")]
+    private float fullHealth;
 
     private float effectiveHealth;
 
     private void Awake()
     {
-        Assert.IsTrue(this.maxHealth > 0, "Invalid asset (Max health should be positive)");
-        this.effectiveHealth = this.maxHealth;
+        Assert.IsTrue(this.fullHealth > 0, "Invalid asset (Max health should be positive)");
+        Assert.IsNotNull(this.playerKilledEvent, "Missing asset (Player killed GameEvent required)");
+        this.effectiveHealth = this.fullHealth;
     }
 
-    public void takeDamage(float amount)
+    public void TakeDamage(float amount)
     {
-        Debug.Log("Take damage: " + amount + " / remains: " + this.effectiveHealth);
         this.effectiveHealth -= amount;
-        //this.effectiveHealth = Mathf.Clamp(this.effectiveHealth, 0, this.maxHealth);
+        this.effectiveHealth = Mathf.Clamp(this.effectiveHealth, 0, this.fullHealth);
+        Debug.Log("Player takes  " + amount + " damage" + amount + " / remaining: " + this.effectiveHealth);
         if(this.effectiveHealth == 0)
         {
-            this.kill();
+            this.Kill();
         }
     }
 
-    public void kill()
+    public void Kill()
     {
-        Debug.Log("Kill player");
-        GameObject.Destroy(this.gameObject);
+        Debug.Log("Player is killed");
         this.effectiveHealth = 0;
-        // TODO Send event
-        // TODO Destroy anim
+        GameObject.Destroy(this.gameObject);
+        this.playerKilledEvent.Raise();
     }
 }

@@ -19,7 +19,7 @@ public class ProjectileDamage : MonoBehaviour
         PlayerHealth health = collision.gameObject.GetComponent<PlayerHealth>();
         if(health)
         {
-            health.takeDamage(this.damageHitPoint);
+            health.TakeDamage(this.damageHitPoint);
         }
     }
 }
