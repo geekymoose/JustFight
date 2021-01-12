@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: -4317437109668150757}
   - component: {fileID: 1411444458571794155}
   - component: {fileID: 4148795033347644042}
+  - component: {fileID: -7548893153925307293}
   m_Layer: 0
   m_Name: Prefab_Profectile
   m_TagString: Untagged
@@ -192,4 +193,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageHitPoint: 25
+--- !u!114 &-7548893153925307293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134910429604523793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f1a82cb9668a44bb9346f96c92d60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   lifetimeInSec: 1

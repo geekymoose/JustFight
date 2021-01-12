@@ -13,13 +13,13 @@ public class PlayerMovement : MonoBehaviour
     private float effectiveSpeed = 0.0f;
     private bool isIdle = true;
 
-    void Start()
+    private void Awake()
     {
-        this.rg2D= this.GetComponent<Rigidbody2D>();
+        this.rg2D = this.GetComponent<Rigidbody2D>();
         Assert.IsNotNull(this.rg2D, "Missing asset (rigidbody2D)");
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         this.rg2D.velocity = this.movementDirection * this.effectiveSpeed;
     }

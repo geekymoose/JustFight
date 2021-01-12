@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
     private float effectivePower = 0;
     private bool isChargingPower = false;
 
-    private void Start()
+    private void Awake()
     {
         Assert.IsTrue(this.chargingTimeInPowerPerSec > 0, "Invalid asset (Charging time value)");
         Assert.IsTrue(this.maxPower > 0, "Invalid asset (Max power value)");
