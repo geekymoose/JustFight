@@ -249,8 +249,8 @@ MonoBehaviour:
   projectile: {fileID: 1134910429604523793, guid: 8b22d891325c1ae459b125ad77098384,
     type: 3}
   weaponEndPoint: {fileID: 2104024751}
-  chargingTimeInPowerPerSec: 2
-  maxPower: 2
+  chargingTimeInPowerPerSec: 15
+  maxPower: 15
 --- !u!1 &7772981648562408374
 GameObject:
   m_ObjectHideFlags: 0
