@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3695334623919467126}
   - component: {fileID: 3695334623919467121}
   - component: {fileID: 3695334623919467120}
+  - component: {fileID: 7240624916511442171}
   m_Layer: 0
   m_Name: Prefab_GameManager
   m_TagString: Untagged
@@ -44,6 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d2eba28cff36e41aa8507b76c0c02c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 5696776292164444488, guid: 78a9214d6f9e3214ca9773d5b6e27507,
+    type: 3}
+  playerSpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &3695334623919467120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +70,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3695334623919467121}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Gameover
+        m_MethodName: GameOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -72,3 +80,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7240624916511442171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3695334623919467123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a05d4c4ef6097849a9f9cde42771566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
