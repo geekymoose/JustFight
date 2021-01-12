@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         this.rg2D= this.GetComponent<Rigidbody2D>();
-        Assert.IsNotNull(this.rg2D, "Missing component (rigidbody2D)");
+        Assert.IsNotNull(this.rg2D, "Missing asset (rigidbody2D)");
     }
 
     void FixedUpdate()
