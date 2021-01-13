@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// Shot that has an initial speed, then decrease continuously.
 public class ShotMovementProjectile : MonoBehaviour
 {
     [SerializeField]

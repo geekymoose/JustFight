@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/// Shot that goes forward with the same pace
 public class ShotMovementMissile : MonoBehaviour
 {
     [SerializeField]

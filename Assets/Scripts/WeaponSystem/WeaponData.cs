@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [CreateAssetMenu(fileName = "WeaponData", menuName = "ScriptableObjects/WeaponData", order = 1)]
 public class WeaponData : ScriptableObject
@@ -19,4 +20,13 @@ public class WeaponData : ScriptableObject
     [Tooltip("Minimum power required to fire a shot (in % of the max power required)")]
     [Range(0,100)]
     private float minPowerRequiredInPercents;
+
+    private void Awake()
+    {
+        Assert.IsNotNull(this.shotPrefab, "Missing asset");
+        Assert.IsTrue(this.reloadingSpeedInSec >= 0, "Invalid assert");
+        Assert.IsTrue(this.maxPower > 0, "Invalid assert");
+        Assert.IsTrue(this.minPowerRequiredInPercents >= 0, "Invalid assert");
+        Assert.IsTrue(this.minPowerRequiredInPercents <= 100, "Invalid assert");
+    }
 }

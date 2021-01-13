@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63aca1cb12d55b748855b6b525808654, type: 3}
-  m_Name: WeaponData_MissileLauncher
+  m_Name: WeaponData_RocketLauncher
   m_EditorClassIdentifier: 
   shotPrefab: {fileID: 6145737065582151281, guid: b0b24cc971dddc248be80e00ac9fe727,
     type: 3}
