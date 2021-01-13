@@ -53,4 +53,9 @@ public class ShotData : ScriptableObject
     {
         return this.movementSpeed;
     }
+
+    public float GetDamageAmount()
+    {
+        return this.damageAmount;
+    }
 }

@@ -59,6 +59,7 @@ public class ShotController : MonoBehaviour
             {
                 if(this.shotData.canAffectTarget(targetData))
                 {
+                    targetController.TakeDamage(this.shotData.GetDamageAmount());
                 }
             }
         }

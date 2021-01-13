@@ -20,7 +20,6 @@ public class ShotMovementProjectile : MonoBehaviour
     {
         this.rg = this.GetComponent<Rigidbody2D>();
         Assert.IsNotNull(this.rg, "Missing asset (Rigidbody2D)");
-        //Assert.IsTrue(this.initalSpeedInUnitsPerSec > 0, "Invalid asset (Default speed should not positive)");
     }
 
     private void Start()

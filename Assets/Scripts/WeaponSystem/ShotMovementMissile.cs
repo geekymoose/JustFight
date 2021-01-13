@@ -18,7 +18,6 @@ public class ShotMovementMissile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("X");
         Vector2 forwardForce = new Vector2(this.transform.up.x, this.transform.up.y);
         forwardForce *= this.speedInUnityForce * Time.deltaTime;
         this.rg.AddForce(forwardForce);
