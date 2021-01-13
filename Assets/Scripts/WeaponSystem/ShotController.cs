@@ -62,6 +62,7 @@ public class ShotController : MonoBehaviour
                 }
             }
         }
+        GameObject.Destroy(this.gameObject); // TODO update with a better "Impact" system
     }
 
     public void SetCurrentShotSpeed(float speed)

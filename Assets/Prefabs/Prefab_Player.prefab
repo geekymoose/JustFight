@@ -265,7 +265,7 @@ MonoBehaviour:
   playerKilledEvent: {fileID: 11400000, guid: c53b716d208a7f0478473f500218b905, type: 2}
   playerTakesDamageEvent: {fileID: 11400000, guid: 46870b540d6688e47976b8328cae588e,
     type: 2}
-  fullHealth: 100
+  fullHealth: 500
 --- !u!114 &6977977744909153535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +309,12 @@ MonoBehaviour:
   weapons:
   - {fileID: 11400000, guid: 335889cdd233eb44bbdc1b6cda8e2f37, type: 2}
   weaponEndPoint: {fileID: 2104024751}
+  notEnoughPowerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  noWeaponAvailableEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7772981648562408374
 GameObject:
   m_ObjectHideFlags: 0
