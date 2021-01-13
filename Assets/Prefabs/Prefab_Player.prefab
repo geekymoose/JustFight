@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 579132740}
   - component: {fileID: 320284727}
   - component: {fileID: 3115848290776553216}
+  - component: {fileID: 6977977744909153535}
   m_Layer: 0
   m_Name: Prefab_Player
   m_TagString: Untagged
@@ -268,6 +269,19 @@ MonoBehaviour:
   playerTakesDamageEvent: {fileID: 11400000, guid: 46870b540d6688e47976b8328cae588e,
     type: 2}
   fullHealth: 100
+--- !u!114 &6977977744909153535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696776292164444488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3160f324dd6b6e440b8debcf960ab1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetData: {fileID: 11400000, guid: 6591de13027588c449f59c3356d0b3b0, type: 2}
 --- !u!1 &7772981648562408374
 GameObject:
   m_ObjectHideFlags: 0

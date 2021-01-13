@@ -46,4 +46,21 @@ public class ShotController : MonoBehaviour
             this.movementProjectile.enabled = true;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        TargetController targetController = collision.gameObject.GetComponent<TargetController>();
+
+        if(targetController)
+        {
+            TargetData targetData = targetController.GetTargetData();
+            Assert.IsNotNull(targetData, "Unexpected TargetController without a targetData");
+            if(targetData)
+            {
+                if(this.shotData.canAffectTarget(targetData))
+                {
+                }
+            }
+        }
+    }
 }
