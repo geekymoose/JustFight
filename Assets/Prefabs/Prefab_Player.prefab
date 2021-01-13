@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 320284727}
   - component: {fileID: 3115848290776553216}
   - component: {fileID: 6977977744909153535}
+  - component: {fileID: -6973053812911846139}
   m_Layer: 0
   m_Name: Prefab_Player
   m_TagString: Untagged
@@ -248,11 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8d261c0fbe6da49a02780d145f5938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1134910429604523793, guid: 8b22d891325c1ae459b125ad77098384,
-    type: 3}
-  weaponEndPoint: {fileID: 2104024751}
   chargingTimeInPowerPerSec: 40
-  maxPower: 40
 --- !u!114 &3115848290776553216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +294,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-6973053812911846139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696776292164444488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a55994246412b1439fc0b82226c9045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 11400000, guid: 335889cdd233eb44bbdc1b6cda8e2f37, type: 2}
+  weaponEndPoint: {fileID: 2104024751}
 --- !u!1 &7772981648562408374
 GameObject:
   m_ObjectHideFlags: 0

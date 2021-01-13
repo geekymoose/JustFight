@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 
 public class WeaponController : MonoBehaviour
 {
@@ -12,6 +13,14 @@ public class WeaponController : MonoBehaviour
     [SerializeField]
     [Tooltip("This is where the projectil comes from")]
     private Transform weaponEndPoint;
+
+    [SerializeField]
+    [Tooltip("Event raised whenever the player tries to fire with not enough energy")]
+    private UnityEvent notEnoughPowerEvent;
+
+    [SerializeField]
+    [Tooltip("Event raised when the player tries to fire but not weapons are available")]
+    private UnityEvent noWeaponAvailableEvent;
 
     private int currentWeaponIndex = 0;
 
@@ -25,10 +34,10 @@ public class WeaponController : MonoBehaviour
 
     public void Fire(float powerAmount)
     {
+        Debug.Log("Fire with " + powerAmount + " of power");
         WeaponData currentWeapon = this.GetCurrentWeapon();
         if(currentWeapon)
         {
-            Debug.Log("Fire with " + powerAmount + " of energy");
             powerAmount = Mathf.Clamp(powerAmount, 0, currentWeapon.GetMaxPower());
             if(currentWeapon.IsEnoughPowerToFire(powerAmount))
             {
@@ -42,6 +51,16 @@ public class WeaponController : MonoBehaviour
                     shotController.SetCurrentShotSpeed(effectiveSpeed);
                 }
             }
+            else
+            {
+                Debug.Log("Can't fire: not enough power");
+                this.notEnoughPowerEvent.Invoke();
+            }
+        }
+        else
+        {
+            Debug.Log("Can't fire: no weapon available");
+            this.noWeaponAvailableEvent.Invoke();
         }
     }
 
@@ -73,7 +92,7 @@ public class WeaponController : MonoBehaviour
 
     public WeaponData GetCurrentWeapon()
     {
-        if(this.weapons.Count > 1)
+        if(this.weapons.Count > 0)
         {
             return this.weapons[this.currentWeaponIndex];
         }
