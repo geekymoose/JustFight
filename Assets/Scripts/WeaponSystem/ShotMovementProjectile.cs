@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class MovementProjectile : MonoBehaviour
+public class ShotMovementProjectile : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Default initial speed (In Unity Units per seconds")]

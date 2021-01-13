@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class MovementMissile : MonoBehaviour
+public class ShotMovementMissile : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("The missile speed (Unity force to apply)")]
