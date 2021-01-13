@@ -28,5 +28,27 @@ public class WeaponData : ScriptableObject
         Assert.IsTrue(this.maxPower > 0, "Invalid assert");
         Assert.IsTrue(this.minPowerRequiredInPercents >= 0, "Invalid assert");
         Assert.IsTrue(this.minPowerRequiredInPercents <= 100, "Invalid assert");
+
+        Assert.IsNotNull(this.shotPrefab.GetComponent<ShotController>(), "Missing asset (shot must have a ShotController)");
+    }
+
+    public bool IsEnoughPowerToFire(float powerAmount)
+    {
+        return powerAmount > this.GetMinPowerRequired();
+    }
+
+    public GameObject GetShotPrefab()
+    {
+        return this.shotPrefab;
+    }
+
+    public float GetMaxPower()
+    {
+        return this.maxPower;
+    }
+
+    public float GetMinPowerRequired()
+    {
+        return (this.maxPower / 100) * this.minPowerRequiredInPercents;
     }
 }

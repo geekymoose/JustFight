@@ -39,7 +39,7 @@ public class ShotData : ScriptableObject
         }
     }
 
-    public bool canAffectTarget(TargetData targetData)
+    public bool CanAffectTarget(TargetData targetData)
     {
         return this.affectedTargetsByShot.Contains(targetData);
     }

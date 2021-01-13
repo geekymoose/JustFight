@@ -20,8 +20,7 @@ public class ShotController : MonoBehaviour
         this.movementMissile.enabled = false;
         this.movementProjectile.enabled = false;
 
-        this.movementMissile.SetCurrentSpeed(this.shotData.GetShotMovementSpeed());
-        this.movementProjectile.SetCurrentSpeed(this.shotData.GetShotMovementSpeed());
+        this.SetCurrentShotSpeed(this.shotData.GetShotMovementSpeed());
 
         Assert.IsNotNull(this.shotData, "Missing asset");
         Assert.IsNotNull(this.movementMissile, "Missing asset");
@@ -57,11 +56,17 @@ public class ShotController : MonoBehaviour
             Assert.IsNotNull(targetData, "Unexpected TargetController without a targetData");
             if(targetData)
             {
-                if(this.shotData.canAffectTarget(targetData))
+                if(this.shotData.CanAffectTarget(targetData))
                 {
                     targetController.TakeDamage(this.shotData.GetDamageAmount());
                 }
             }
         }
+    }
+
+    public void SetCurrentShotSpeed(float speed)
+    {
+        this.movementMissile.SetCurrentSpeed(speed);
+        this.movementProjectile.SetCurrentSpeed(speed);
     }
 }
