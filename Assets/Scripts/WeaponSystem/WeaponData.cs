@@ -5,8 +5,8 @@ using UnityEngine.Assertions;
 public class WeaponData : ScriptableObject
 {
     [SerializeField]
-    [Tooltip("The shot prefab that this weapon will shot when firing")]
-    private GameObject shotPrefab;
+    [Tooltip("The shot that this weapon will shot when firing")]
+    private ShotData shotData;
 
     [SerializeField]
     [Tooltip("Time it takes for this weapon to reload before next shoot (in seconds)")]
@@ -23,13 +23,11 @@ public class WeaponData : ScriptableObject
 
     private void Awake()
     {
-        Assert.IsNotNull(this.shotPrefab, "Missing asset");
+        Assert.IsNotNull(this.shotData, "Missing asset");
         Assert.IsTrue(this.reloadingSpeedInSec >= 0, "Invalid assert");
         Assert.IsTrue(this.maxPower > 0, "Invalid assert");
         Assert.IsTrue(this.minPowerRequiredInPercents >= 0, "Invalid assert");
         Assert.IsTrue(this.minPowerRequiredInPercents <= 100, "Invalid assert");
-
-        Assert.IsNotNull(this.shotPrefab.GetComponent<ShotController>(), "Missing asset (shot must have a ShotController)");
     }
 
     public bool IsEnoughPowerToFire(float powerAmount)
@@ -37,9 +35,9 @@ public class WeaponData : ScriptableObject
         return powerAmount > this.GetMinPowerRequired();
     }
 
-    public GameObject GetShotPrefab()
+    public ShotData GetShotData()
     {
-        return this.shotPrefab;
+        return this.shotData;
     }
 
     public float GetMaxPower()

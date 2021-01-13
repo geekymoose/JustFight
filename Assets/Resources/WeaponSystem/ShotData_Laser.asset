@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c987af0c2dcb6a45af73d341c95b6eb, type: 3}
   m_Name: ShotData_Laser
   m_EditorClassIdentifier: 
+  shotPrefab: {fileID: 4461884403967580548, guid: e49e71bdd07ea514faf9344fce1b3ad2,
+    type: 3}
   affectedTargetsByShot:
   - {fileID: 11400000, guid: 6591de13027588c449f59c3356d0b3b0, type: 2}
   shotMovementType: 0

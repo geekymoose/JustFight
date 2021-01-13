@@ -14,6 +14,10 @@ public enum ShotMovementType
 public class ShotData : ScriptableObject
 {
     [SerializeField]
+    [Tooltip("The prefab to instanciate for this shot type")]
+    private GameObject shotPrefab;
+
+    [SerializeField]
     [Tooltip("List of target this shot can damage")]
     private List<TargetData> affectedTargetsByShot;
 
@@ -33,6 +37,7 @@ public class ShotData : ScriptableObject
     {
         Assert.IsNotNull(this.affectedTargetsByShot, "Missing asset");
         Assert.IsTrue(this.damageAmount > 0, "Invalid asset (amount of damage should be positive");
+        Assert.IsNotNull(this.shotPrefab.GetComponent<ShotController>(), "Missing asset (shot must have a ShotController)");
         if(this.shotMovementType != ShotMovementType.HITSCAN)
         {
             Assert.IsTrue(this.movementSpeed > 0, "Invalid asset");
@@ -57,5 +62,10 @@ public class ShotData : ScriptableObject
     public float GetDamageAmount()
     {
         return this.damageAmount;
+    }
+
+    public GameObject getShotPrefab()
+    {
+        return this.shotPrefab;
     }
 }

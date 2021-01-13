@@ -7,13 +7,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63aca1cb12d55b748855b6b525808654, type: 3}
   m_Name: WeaponData_Laser
   m_EditorClassIdentifier: 
-  shotPrefab: {fileID: 4461884403967580548, guid: e49e71bdd07ea514faf9344fce1b3ad2,
-    type: 3}
+  shotData: {fileID: 11400000, guid: 4690c04dd0671334fa0f24fe00ed5749, type: 2}
   reloadingSpeedInSec: 10
   maxPower: 100
-  minPowerRequired: 0
+  minPowerRequiredInPercents: 0

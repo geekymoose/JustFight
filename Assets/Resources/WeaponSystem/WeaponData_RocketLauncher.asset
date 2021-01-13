@@ -7,13 +7,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63aca1cb12d55b748855b6b525808654, type: 3}
   m_Name: WeaponData_RocketLauncher
   m_EditorClassIdentifier: 
-  shotPrefab: {fileID: 6145737065582151281, guid: b0b24cc971dddc248be80e00ac9fe727,
-    type: 3}
+  shotData: {fileID: 11400000, guid: aa3e205147b992b4491f08a73b4d769d, type: 2}
   reloadingSpeedInSec: 1
   maxPower: 30
   minPowerRequiredInPercents: 20
