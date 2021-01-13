@@ -21,7 +21,7 @@ public class ShotMovementMissile : MonoBehaviour
         Vector2 forwardForce = new Vector2(this.transform.up.x, this.transform.up.y);
         forwardForce *= this.speedInUnityForce * Time.deltaTime;
         this.rg.AddForce(forwardForce);
-        Debug.DrawRay(this.transform.position, this.rg.velocity, Color.red, 0.2f);
+        Debug.DrawRay(this.transform.position, this.rg.velocity, Color.green, 0.2f);
     }
 
     public void SetCurrentSpeed(float speed)
