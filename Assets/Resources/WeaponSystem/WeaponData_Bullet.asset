@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63aca1cb12d55b748855b6b525808654, type: 3}
+  m_Name: WeaponData_Bullet
+  m_EditorClassIdentifier: 
+  shotPrefab: {fileID: 3606172235394193537, guid: 793f6f81317646443b8945951deefc6f,
+    type: 3}
+  reloadingSpeedInSec: 0.5
+  maxPower: 10
+  minPowerRequiredInPercents: 30
