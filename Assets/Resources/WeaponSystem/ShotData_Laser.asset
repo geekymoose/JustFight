@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   affectedTargetsByShot:
   - {fileID: 11400000, guid: 6591de13027588c449f59c3356d0b3b0, type: 2}
+  shotMovementType: 0
+  movementSpeed: 0
   damageAmount: 50

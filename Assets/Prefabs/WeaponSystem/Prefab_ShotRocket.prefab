@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1162744278736677089}
   - component: {fileID: 1661180322923571723}
   - component: {fileID: -7632590603523216171}
-  - component: {fileID: -5828727274124035348}
+  - component: {fileID: 8052233686239959234}
   m_Layer: 0
-  m_Name: Prefab_ShotMissile
+  m_Name: Prefab_ShotRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &-5828727274124035348
+--- !u!114 &8052233686239959234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,10 +80,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6145737065582151281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76ec0ae318fe322459e82ba9a93fe417, type: 3}
+  m_Script: {fileID: 11500000, guid: 0898d5c5158a24c448a2e8635494a72d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  shotData: {fileID: 11400000, guid: aa3e205147b992b4491f08a73b4d769d, type: 2}
 --- !u!1 &8837775780085171271
 GameObject:
   m_ObjectHideFlags: 0

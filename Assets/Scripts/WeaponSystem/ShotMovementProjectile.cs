@@ -10,7 +10,7 @@ public class ShotMovementProjectile : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Each second, the speed is affected by this modificator (In Unity force)")]
-    private float speedModificator;
+    private float speedModificator = 1;
 
     private float startTime; // Time when the movement started
 
@@ -20,13 +20,12 @@ public class ShotMovementProjectile : MonoBehaviour
     {
         this.rg = this.GetComponent<Rigidbody2D>();
         Assert.IsNotNull(this.rg, "Missing asset (Rigidbody2D)");
-        Assert.IsTrue(this.initalSpeedInUnitsPerSec > 0, "Invalid asset (Default speed should not positive)");
+        //Assert.IsTrue(this.initalSpeedInUnitsPerSec > 0, "Invalid asset (Default speed should not positive)");
     }
 
     private void Start()
     {
         this.startTime = Time.time;
-        this.SetCurrentSpeed(this.initalSpeedInUnitsPerSec);
     }
 
     private void FixedUpdate()

@@ -1,10 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class ShotController : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("The data to use for this shot")]
     private ShotData shotData;
+
+    private ShotMovementMissile movementMissile;
+    private ShotMovementProjectile movementProjectile;
+
+    private void Awake()
+    {
+        this.movementMissile = this.gameObject.AddComponent<ShotMovementMissile>();
+        this.movementProjectile = this.gameObject.AddComponent<ShotMovementProjectile>();
+
+        this.movementMissile.enabled = false;
+        this.movementProjectile.enabled = false;
+
+        this.movementMissile.SetCurrentSpeed(this.shotData.GetShotMovementSpeed());
+        this.movementProjectile.SetCurrentSpeed(this.shotData.GetShotMovementSpeed());
+
+        Assert.IsNotNull(this.shotData, "Missing asset");
+        Assert.IsNotNull(this.movementMissile, "Missing asset");
+        Assert.IsNotNull(this.movementProjectile, "Missing asset");
+    }
+
+    private void Start()
+    {
+        if(this.shotData.GetShotMovementType() == ShotMovementType.HITSCAN)
+        {
+            this.movementMissile.enabled = false;
+            this.movementProjectile.enabled = false;
+        }
+        else if(this.shotData.GetShotMovementType() == ShotMovementType.MISSILE)
+        {
+            this.movementMissile.enabled = true;
+            this.movementProjectile.enabled = false;
+        }
+        else if(this.shotData.GetShotMovementType() == ShotMovementType.PROJECTILE)
+        {
+            this.movementMissile.enabled = false;
+            this.movementProjectile.enabled = true;
+        }
+    }
 }

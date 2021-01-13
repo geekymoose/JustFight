@@ -6,7 +6,7 @@ public class ShotMovementMissile : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("The missile speed (Unity force to apply)")]
-    private float speed;
+    private float speedInUnityForce;
 
     private Rigidbody2D rg;
 
@@ -14,14 +14,19 @@ public class ShotMovementMissile : MonoBehaviour
     {
         this.rg = this.GetComponent<Rigidbody2D>();
         Assert.IsNotNull(this.rg, "Missing asset (Rigidbody2D)");
-        Assert.IsTrue(this.speed > 0, "Invalid asset (speed should not be zero)");
     }
 
     private void FixedUpdate()
     {
-        Vector2 forward = new Vector2(this.transform.up.x, this.transform.up.y);
-        forward *= this.speed * Time.deltaTime;
-        this.rg.AddForce(forward);
+        Debug.Log("X");
+        Vector2 forwardForce = new Vector2(this.transform.up.x, this.transform.up.y);
+        forwardForce *= this.speedInUnityForce * Time.deltaTime;
+        this.rg.AddForce(forwardForce);
         Debug.DrawRay(this.transform.position, this.rg.velocity, Color.red, 0.2f);
+    }
+
+    public void SetCurrentSpeed(float speed)
+    {
+        this.speedInUnityForce = speed;
     }
 }
