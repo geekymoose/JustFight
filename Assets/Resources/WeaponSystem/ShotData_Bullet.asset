@@ -16,4 +16,4 @@ MonoBehaviour:
     type: 3}
   shotMovementType: 2
   movementSpeed: 50
-  damageAmount: 5
+  damageAmount: 40

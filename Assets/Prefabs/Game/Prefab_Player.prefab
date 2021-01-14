@@ -205,7 +205,7 @@ MonoBehaviour:
     m_ActionId: bc3102ab-224b-4e3a-9577-22553ae4a616
     m_ActionName: Player/Fire3[/DualShock4GamepadHID/buttonWest]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2077594692bff7440addf14c754f92a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMovementSpeedInUnitPerSec: 10
+  maxMovementSpeedInUnitPerSec: 5
 --- !u!114 &320284727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +346,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   noWeaponAvailableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  weaponReloadingEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &7772981648562408374
