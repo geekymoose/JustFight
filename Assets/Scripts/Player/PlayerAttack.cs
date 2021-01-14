@@ -41,38 +41,23 @@ public class PlayerAttack : MonoBehaviour
     public void OnInputFire1(InputAction.CallbackContext context)
     {
         this.weaponController.SelectWeaponAt(0);
-        switch (context.phase)
-        {
-            case InputActionPhase.Started:
-                // Button pressed
-                this.isChargingPower = true;
-                break;
-            case InputActionPhase.Canceled:
-                // Button released
-                this.Fire();
-                break;
-        }
+        this.HandleOnputFire(context);
     }
 
     public void OnInputFire2(InputAction.CallbackContext context)
     {
         this.weaponController.SelectWeaponAt(1);
-        switch (context.phase)
-        {
-            case InputActionPhase.Started:
-                // Button pressed
-                this.isChargingPower = true;
-                break;
-            case InputActionPhase.Canceled:
-                // Button released
-                this.Fire();
-                break;
-        }
+        this.HandleOnputFire(context);
     }
 
     public void OnInputFire3(InputAction.CallbackContext context)
     {
         this.weaponController.SelectWeaponAt(2);
+        this.HandleOnputFire(context);
+    }
+
+    private void HandleOnputFire(InputAction.CallbackContext context)
+    {
         switch (context.phase)
         {
             case InputActionPhase.Started:

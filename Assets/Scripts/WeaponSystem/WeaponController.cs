@@ -47,7 +47,6 @@ public class WeaponController : MonoBehaviour
                 {
                     float shotSpeed = currentWeapon.GetShotData().GetShotMovementSpeed();
                     float effectiveSpeed = (powerAmount / currentWeapon.GetMaxPower()) * shotSpeed;
-                    Debug.Log("Debgu: " + currentWeapon.GetMaxPower() + " / " + powerAmount + " * " + shotSpeed + " = " + effectiveSpeed);
                     shotController.SetCurrentShotSpeed(effectiveSpeed);
                     shotController.SetShotOwner(this);
                 }
