@@ -56,7 +56,7 @@ public class ShotController : MonoBehaviour
             Assert.IsNotNull(targetData, "Unexpected TargetController without a targetData");
             if(targetData)
             {
-                if(this.shotData.CanAffectTarget(targetData))
+                if(targetData.IsAffectedByShot(this.shotData))
                 {
                     targetController.TakeDamage(this.shotData.GetDamageAmount());
                 }

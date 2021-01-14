@@ -15,4 +15,4 @@ MonoBehaviour:
   shotData: {fileID: 11400000, guid: 10b8b111b543935498310af066fc4293, type: 2}
   reloadingSpeedInSec: 0.5
   maxPower: 10
-  minPowerRequiredInPercents: 30
+  minPowerRequiredInPercents: 5

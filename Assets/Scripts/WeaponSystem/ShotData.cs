@@ -18,10 +18,6 @@ public class ShotData : ScriptableObject
     private GameObject shotPrefab;
 
     [SerializeField]
-    [Tooltip("List of target this shot can damage")]
-    private List<TargetData> affectedTargetsByShot;
-
-    [SerializeField]
     [Tooltip("Type of momement this shot uses")]
     private ShotMovementType shotMovementType;
 
@@ -35,18 +31,12 @@ public class ShotData : ScriptableObject
 
     private void Awake()
     {
-        Assert.IsNotNull(this.affectedTargetsByShot, "Missing asset");
         Assert.IsTrue(this.damageAmount > 0, "Invalid asset (amount of damage should be positive");
         Assert.IsNotNull(this.shotPrefab.GetComponent<ShotController>(), "Missing asset (shot must have a ShotController)");
         if(this.shotMovementType != ShotMovementType.HITSCAN)
         {
             Assert.IsTrue(this.movementSpeed > 0, "Invalid asset");
         }
-    }
-
-    public bool CanAffectTarget(TargetData targetData)
-    {
-        return this.affectedTargetsByShot.Contains(targetData);
     }
 
     public ShotMovementType GetShotMovementType()
