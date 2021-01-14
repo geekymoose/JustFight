@@ -49,4 +49,9 @@ public class WeaponData : ScriptableObject
     {
         return (this.maxPower / 100) * this.minPowerRequiredInPercents;
     }
+
+    public float GetReloadingSpeed()
+    {
+        return this.reloadingSpeedInSec;
+    }
 }

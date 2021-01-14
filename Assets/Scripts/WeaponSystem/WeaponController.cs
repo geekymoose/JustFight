@@ -22,7 +22,15 @@ public class WeaponController : MonoBehaviour
     [Tooltip("Event raised when the player tries to fire but not weapons are available")]
     private UnityEvent noWeaponAvailableEvent;
 
+    [SerializeField]
+    [Tooltip("Event raised whenever the player tries to fire when the weapon is still reloading")]
+    private UnityEvent weaponReloadingEvent;
+
     private int currentWeaponIndex = 0;
+
+    // TODO warning: if the weapon list is update in the editor (during dev), this list is not updated yet
+    // The unity editor action could call a script "add" method maybe
+    private List<float> weaponsLastTimeUsages; // 1 to 1 link with the list of weapons (reloading for each)
 
     private void Awake()
     {
@@ -30,6 +38,12 @@ public class WeaponController : MonoBehaviour
         Assert.IsNotNull(this.weaponEndPoint, "Missing asset");
         Assert.IsTrue(this.currentWeaponIndex >= 0, "Invalid asset");
         Assert.IsTrue(this.currentWeaponIndex < this.weapons.Count, "Invalid asset");
+        this.weaponsLastTimeUsages = new List<float>(this.weapons.Count);
+        for(int k = 0; k < this.weapons.Count; ++k)
+        {
+            this.weaponsLastTimeUsages.Add(Time.time);
+        }
+        Assert.IsTrue(this.weapons.Count == this.weaponsLastTimeUsages.Count);
     }
 
     public void Fire(float powerAmount)
@@ -37,24 +51,33 @@ public class WeaponController : MonoBehaviour
         WeaponData currentWeapon = this.GetCurrentWeapon();
         if(currentWeapon)
         {
-            powerAmount = Mathf.Clamp(powerAmount, 0, currentWeapon.GetMaxPower());
-            if(currentWeapon.IsEnoughPowerToFire(powerAmount))
+            if(this.IsCurrentWeaponReloading())
             {
-                GameObject shot = Instantiate(currentWeapon.GetShotData().getShotPrefab(), this.weaponEndPoint);
-                ShotController shotController = shot.GetComponent<ShotController>();
-                Assert.IsNotNull(shotController, "Shot prefab doesn't have a ShotController component");
-                if(shotController)
-                {
-                    float shotSpeed = currentWeapon.GetShotData().GetShotMovementSpeed();
-                    float effectiveSpeed = (powerAmount / currentWeapon.GetMaxPower()) * shotSpeed;
-                    shotController.SetCurrentShotSpeed(effectiveSpeed);
-                    shotController.SetShotOwner(this);
-                }
+                Debug.Log("Unable to shoot: Weapon is still reloading");
+                this.weaponReloadingEvent.Invoke();
             }
             else
             {
-                Debug.Log("Can't fire: not enough power");
-                this.notEnoughPowerEvent.Invoke();
+                powerAmount = Mathf.Clamp(powerAmount, 0, currentWeapon.GetMaxPower());
+                if(currentWeapon.IsEnoughPowerToFire(powerAmount))
+                {
+                    GameObject shot = Instantiate(currentWeapon.GetShotData().getShotPrefab(), this.weaponEndPoint);
+                    ShotController shotController = shot.GetComponent<ShotController>();
+                    Assert.IsNotNull(shotController, "Shot prefab doesn't have a ShotController component");
+                    if(shotController)
+                    {
+                        float shotSpeed = currentWeapon.GetShotData().GetShotMovementSpeed();
+                        float effectiveSpeed = (powerAmount / currentWeapon.GetMaxPower()) * shotSpeed;
+                        shotController.SetCurrentShotSpeed(effectiveSpeed);
+                        shotController.SetShotOwner(this);
+                        this.ReloadCurrentWeapon();
+                    }
+                }
+                else
+                {
+                    Debug.Log("Can't fire: not enough power");
+                    this.notEnoughPowerEvent.Invoke();
+                }
             }
         }
         else
@@ -100,5 +123,18 @@ public class WeaponController : MonoBehaviour
         {
             return null;
         }
+    }
+
+    public bool IsCurrentWeaponReloading()
+    {
+
+        WeaponData current = this.GetCurrentWeapon();
+        float lastUsage = this.weaponsLastTimeUsages[this.currentWeaponIndex];
+        return Time.time <= lastUsage + current.GetReloadingSpeed();
+    }
+
+    public void ReloadCurrentWeapon()
+    {
+        this.weaponsLastTimeUsages[this.currentWeaponIndex] = Time.time;
     }
 }

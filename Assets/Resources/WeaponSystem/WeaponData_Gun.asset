@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WeaponData_Gun
   m_EditorClassIdentifier: 
   shotData: {fileID: 11400000, guid: 10b8b111b543935498310af066fc4293, type: 2}
-  reloadingSpeedInSec: 0.5
+  reloadingSpeedInSec: 0.2
   maxPower: 10
   minPowerRequiredInPercents: 5
