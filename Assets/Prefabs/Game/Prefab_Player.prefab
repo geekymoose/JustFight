@@ -205,7 +205,7 @@ MonoBehaviour:
     m_ActionId: bc3102ab-224b-4e3a-9577-22553ae4a616
     m_ActionName: Player/Fire3[/DualShock4GamepadHID/buttonWest]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

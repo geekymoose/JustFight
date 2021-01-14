@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="screen" style="height: 100%; width: 300px; background-color: rgba(0, 0, 0, 0.19);">
+        <ui:VisualElement style="height: 100%; flex-direction: column; width: 100%;">
+            <ui:VisualElement name="weapon-icons" style="width: 100%; height: 80%; flex-direction: row; background-color: rgba(0, 0, 0, 0.18);">
+                <ui:VisualElement name="icon-laser" style="background-image: url(&apos;/Assets/Sprites/icon-laser.png&apos;); width: 33%; height: 100%; flex-direction: row;" />
+                <ui:VisualElement name="icon-rocket" style="width: 33%; background-image: url(&apos;/Assets/Sprites/icon-gun.png&apos;); flex-direction: row; height: 100%;" />
+                <ui:VisualElement name="icon-gun" style="background-image: url(&apos;/Assets/Sprites/icon-rocket.png&apos;); width: 33%; height: 100%; flex-direction: row;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="health-bar" style="height: 20%; width: 100%; flex-direction: row;">
+                <ui:VisualElement name="red" style="background-color: rgb(255, 0, 0); height: 100%; width: 100%;" />
+                <ui:VisualElement name="black" style="height: 100%;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
