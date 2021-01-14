@@ -15,5 +15,5 @@ MonoBehaviour:
   shotPrefab: {fileID: 3606172235394193537, guid: 793f6f81317646443b8945951deefc6f,
     type: 3}
   shotMovementType: 2
-  movementSpeed: 20
+  movementSpeed: 40
   damageAmount: 5
