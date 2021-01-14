@@ -12,6 +12,8 @@ public class ShotController : MonoBehaviour
     private ShotMovementMissile movementMissile;
     private ShotMovementProjectile movementProjectile;
 
+    private WeaponController weaponControllerOwner; // The one who did the shot
+
     private void Awake()
     {
         this.movementMissile = this.gameObject.AddComponent<ShotMovementMissile>();
@@ -56,7 +58,11 @@ public class ShotController : MonoBehaviour
             Assert.IsNotNull(targetData, "Unexpected TargetController without a targetData");
             if(targetData)
             {
-                if(targetData.IsAffectedByShot(this.shotData))
+                if(targetController.gameObject == this.weaponControllerOwner.gameObject)
+                {
+                    // Shot don't affect the one how sent it
+                }
+                else if(targetData.IsAffectedByShot(this.shotData))
                 {
                     targetController.TakeDamage(this.shotData.GetDamageAmount());
                 }
@@ -70,5 +76,15 @@ public class ShotController : MonoBehaviour
     {
         this.movementMissile.SetCurrentSpeed(speed);
         this.movementProjectile.SetCurrentSpeed(speed);
+    }
+
+    public void SetShotOwner(WeaponController owner)
+    {
+        this.weaponControllerOwner = owner;
+    }
+
+    public WeaponController GetShotOwner()
+    {
+        return this.weaponControllerOwner;
     }
 }
