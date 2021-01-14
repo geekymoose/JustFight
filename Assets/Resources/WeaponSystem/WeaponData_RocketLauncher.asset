@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotData: {fileID: 11400000, guid: aa3e205147b992b4491f08a73b4d769d, type: 2}
   reloadingSpeedInSec: 1
-  maxPower: 30
-  minPowerRequiredInPercents: 20
+  maxPower: 1
+  minPowerRequiredInPercents: 1

@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotPrefab: {fileID: 6145737065582151281, guid: b0b24cc971dddc248be80e00ac9fe727,
     type: 3}
-  affectedTargetsByShot:
-  - {fileID: 11400000, guid: 6591de13027588c449f59c3356d0b3b0, type: 2}
-  - {fileID: 11400000, guid: 4f5d70d038bd32045a17e3804ba76255, type: 2}
   shotMovementType: 1
-  movementSpeed: 5
+  movementSpeed: 12
   damageAmount: 200

@@ -38,8 +38,41 @@ public class PlayerAttack : MonoBehaviour
         this.effectivePower = 0;
     }
 
-    public void OnInputFire(InputAction.CallbackContext context)
+    public void OnInputFire1(InputAction.CallbackContext context)
     {
+        this.weaponController.SelectWeaponAt(0);
+        switch (context.phase)
+        {
+            case InputActionPhase.Started:
+                // Button pressed
+                this.isChargingPower = true;
+                break;
+            case InputActionPhase.Canceled:
+                // Button released
+                this.Fire();
+                break;
+        }
+    }
+
+    public void OnInputFire2(InputAction.CallbackContext context)
+    {
+        this.weaponController.SelectWeaponAt(1);
+        switch (context.phase)
+        {
+            case InputActionPhase.Started:
+                // Button pressed
+                this.isChargingPower = true;
+                break;
+            case InputActionPhase.Canceled:
+                // Button released
+                this.Fire();
+                break;
+        }
+    }
+
+    public void OnInputFire3(InputAction.CallbackContext context)
+    {
+        this.weaponController.SelectWeaponAt(2);
         switch (context.phase)
         {
             case InputActionPhase.Started:

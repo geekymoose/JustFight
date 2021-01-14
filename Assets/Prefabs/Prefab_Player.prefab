@@ -120,7 +120,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 320284727}
         m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
-        m_MethodName: OnInputFire
+        m_MethodName: OnInputFire1
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -172,6 +172,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 29929da1-8a52-473c-8d74-3ef8ec7ecae9
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 320284727}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: OnInputFire2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 66af43fa-d510-4fb1-8807-43687ea6d4e1
+    m_ActionName: Player/Fire2[/DualShock4GamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 320284727}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: OnInputFire3
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bc3102ab-224b-4e3a-9577-22553ae4a616
+    m_ActionName: Player/Fire3[/DualShock4GamepadHID/buttonWest]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -308,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 11400000, guid: 335889cdd233eb44bbdc1b6cda8e2f37, type: 2}
+  - {fileID: 11400000, guid: 202d8cb109be9f9458b2ebcbf735116c, type: 2}
   weaponEndPoint: {fileID: 2104024751}
   notEnoughPowerEvent:
     m_PersistentCalls:
