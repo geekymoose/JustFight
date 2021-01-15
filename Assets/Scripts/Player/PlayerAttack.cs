@@ -8,6 +8,10 @@ public class PlayerAttack : MonoBehaviour
     [Tooltip("Amount of power charged in one second (this is the loading speed)")]
     private float chargingTimeInPowerPerSec = 0;
 
+    [SerializeField]
+    [Tooltip("GameObject uses to indicate the weapon direction and reloading power")]
+    private GameObject weaponDirectionIndicator; // This is hacky
+
     private float effectivePower = 0;
     private bool isChargingPower = false;
     private WeaponController weaponController;
@@ -16,18 +20,35 @@ public class PlayerAttack : MonoBehaviour
     {
         this.weaponController = this.GetComponent<WeaponController>();
         Assert.IsNotNull(this.weaponController, "Missing asset (Player must have a WeaponController)");
+        Assert.IsNotNull(this.weaponDirectionIndicator, "Missing asset");
         Assert.IsTrue(this.chargingTimeInPowerPerSec > 0, "Invalid asset (Charging time value)");
+
+        this.weaponDirectionIndicator.SetActive(false);
     }
 
     private void Update()
     {
         if(this.isChargingPower)
         {
+            this.weaponDirectionIndicator.SetActive(true);
+            float currentPower = Mathf.Clamp(this.effectivePower, 0, this.weaponController.GetCurrentWeapon().GetMaxPower());
+            float percentLoaded = currentPower / this.weaponController.GetCurrentWeapon().GetMaxPower();
+            float newScale = percentLoaded * 3; // *3 because in our case, scale goes from 0 to 3 (hacky)
+            this.weaponDirectionIndicator.transform.localScale = new Vector3(this.weaponDirectionIndicator.transform.localScale.x, newScale, 1);
             this.effectivePower += this.chargingTimeInPowerPerSec * Time.deltaTime;
         }
         else
         {
+            this.weaponDirectionIndicator.SetActive(false);
             this.effectivePower = 0;
+        }
+    }
+
+    private void PrepareFire()
+    {
+        if(!this.weaponController.IsCurrentWeaponReloading())
+        {
+            this.isChargingPower = true;
         }
     }
 
@@ -62,7 +83,7 @@ public class PlayerAttack : MonoBehaviour
         {
             case InputActionPhase.Started:
                 // Button pressed
-                this.isChargingPower = true;
+                this.PrepareFire();
                 break;
             case InputActionPhase.Canceled:
                 // Button released
