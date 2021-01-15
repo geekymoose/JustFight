@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Assertions;
 
 public class PlayerHealth : MonoBehaviour
@@ -15,19 +16,42 @@ public class PlayerHealth : MonoBehaviour
     [Tooltip("Amount of life the player has when he is 100% health")]
     private float fullHealth;
 
+    [SerializeField]
+    [Tooltip("Player health bar UI")]
+    private Slider healthSliderUI;
+
+    [SerializeField]
+    [Tooltip("Player health bar UI Canvas")]
+    private GameObject healthSliderCanvasUI; // This is hacky, because we can't apply the transform on the slider directly
+
+    private Vector3 healthSliderOffseltUI;
+
     private float effectiveHealth;
 
     private void Awake()
     {
         Assert.IsTrue(this.fullHealth > 0, "Invalid asset (Max health should be positive)");
+        Assert.IsNotNull(this.healthSliderUI, "Missing asset");
         Assert.IsNotNull(this.playerKilledEvent, "Missing asset (Player killed GameEvent required)");
+
         this.effectiveHealth = this.fullHealth;
+        this.healthSliderUI.value = effectiveHealth / this.fullHealth;
+        this.healthSliderOffseltUI = this.transform.position - this.healthSliderCanvasUI.transform.position;
+        this.healthSliderOffseltUI.x = 0;
+        this.healthSliderOffseltUI.z = 0;
+    }
+
+    private void LateUpdate()
+    {
+        this.healthSliderCanvasUI.transform.position = this.transform.position - this.healthSliderOffseltUI;
+        this.healthSliderCanvasUI.transform.LookAt(this.transform.position - Vector3.back);
     }
 
     public void TakeDamage(float amount)
     {
         this.effectiveHealth -= amount;
         this.effectiveHealth = Mathf.Clamp(this.effectiveHealth, 0, this.fullHealth);
+        this.healthSliderUI.value = effectiveHealth / this.fullHealth;
         Debug.Log("Player takes  " + amount + " damage" + amount + " / remaining: " + this.effectiveHealth);
         this.playerTakesDamageEvent.Raise();
         if(this.effectiveHealth == 0)
