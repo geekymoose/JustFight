@@ -66,6 +66,7 @@ public class WeaponController : MonoBehaviour
                     Assert.IsNotNull(shotController, "Shot prefab doesn't have a ShotController component");
                     if(shotController)
                     {
+                        shotController.SetShowData(currentWeapon.GetShotData());
                         float shotSpeed = currentWeapon.GetShotData().GetShotMovementSpeed();
                         float effectiveSpeed = (powerAmount / currentWeapon.GetMaxPower()) * shotSpeed;
                         shotController.SetCurrentShotSpeed(effectiveSpeed);
