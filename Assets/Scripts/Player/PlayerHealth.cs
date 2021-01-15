@@ -28,8 +28,13 @@ public class PlayerHealth : MonoBehaviour
 
     private float effectiveHealth;
 
+    private Animator anim;
+
     private void Awake()
     {
+        this.anim = this.GetComponent<Animator>();
+
+        Assert.IsNotNull(this.anim, "Missing asset (Animator)");
         Assert.IsTrue(this.fullHealth > 0, "Invalid asset (Max health should be positive)");
         Assert.IsNotNull(this.healthSliderUI, "Missing asset");
         Assert.IsNotNull(this.playerKilledEvent, "Missing asset (Player killed GameEvent required)");
@@ -64,7 +69,8 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Player is killed");
         this.effectiveHealth = 0;
-        GameObject.Destroy(this.gameObject);
         this.playerKilledEvent.Raise();
+        this.anim.SetTrigger("Dies");
+        GameObject.Destroy(this.gameObject, 1); // Let the anim plays
     }
 }
