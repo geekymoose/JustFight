@@ -1,0 +1,32 @@
+Scenes:
+    ☐ Add Welcome page
+    ☐ Add player selection on the welcome page (select player, start game, leave game)
+    ☐ Add a gameover page with score recap
+    ☐ Show score for each player in the gameover page
+    ☐ UI inputs to restart / stop / return to the welcome page
+Tank:
+    ☐ Divide the movement from the shooting direction (input to move, input to target)
+    ☐ Add tank color for each player
+WeaponSystem:
+    ☐ Cleanup the ShotData (integrate it in the Weapon to make it easier to use)
+    ☐ Implement the hitscan type
+    ☐ Add impact / explosion component
+    ☐ Add projectile life time
+    ☐ Add effect on impact (freeze, push, block, slowdown)
+Arena:
+    ☐ Add a score system
+    ☐ Add a game timer
+    ☐ Add walls (or any indestructible element)
+    ☐ Update arena level
+    ☐ Game stops when timer reach zero
+    ☐ Fix the issue that causes several tanks to respawn
+Animation:
+    ☐ Add projectile explosion
+UI:
+    ☐ Update the healthbar
+Art:
+    ☐ Add crate texture
+    ☐ Add wall texture
+    ☐ Add bush texture
+    ☐ Add rocket texture
+    ☐ Add bullet texture

@@ -206,6 +206,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &234444524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 234444526}
+  - component: {fileID: 234444525}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &234444525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234444524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a55994246412b1439fc0b82226c9045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 11400000, guid: 335889cdd233eb44bbdc1b6cda8e2f37, type: 2}
+  - {fileID: 11400000, guid: 202d8cb109be9f9458b2ebcbf735116c, type: 2}
+  weaponEndPoint: {fileID: 234444526}
+  notEnoughPowerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  noWeaponAvailableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  weaponReloadingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &234444526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234444524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &659700608
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -272,6 +328,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prefab_Arena
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273784689849418799, guid: 7d2290f2934ae144c83443595051a198,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273784690126417459, guid: 7d2290f2934ae144c83443595051a198,
+        type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d2290f2934ae144c83443595051a198, type: 3}
@@ -390,17 +456,22 @@ PrefabInstance:
     - target: {fileID: 5196704286388139450, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5696776292164444488, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
       propertyPath: m_Name
       value: Prefab_Player ENEMY
       objectReference: {fileID: 0}
+    - target: {fileID: 5696776292164444488, guid: 78a9214d6f9e3214ca9773d5b6e27507,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6243309874215320709, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6243309874215320709, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
@@ -464,17 +535,22 @@ PrefabInstance:
     - target: {fileID: 5196704286388139450, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5696776292164444488, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
       propertyPath: m_Name
       value: Prefab_Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5696776292164444488, guid: 78a9214d6f9e3214ca9773d5b6e27507,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6243309874215320709, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6243309874215320709, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
@@ -538,7 +614,7 @@ PrefabInstance:
     - target: {fileID: 6514404546101586344, guid: c26bb2d98fb85a844866290376c26b55,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6514404546101586344, guid: c26bb2d98fb85a844866290376c26b55,
         type: 3}
