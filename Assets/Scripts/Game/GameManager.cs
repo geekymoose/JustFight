@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Assertions;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,9 +34,11 @@ public class GameManager : MonoBehaviour
         this.AddPlayerInGame();
     }
 
-    public void GameOver()
+    public void PlayerKilled()
     {
-        Debug.Log("GameOver");
+        this.effectivePlayerCounter--;
+        IEnumerator coroutine = WaitAndAddPlayerInGame(2.0f);
+        StartCoroutine(coroutine);
     }
 
     public void PauseGame()
@@ -71,5 +74,11 @@ public class GameManager : MonoBehaviour
             Instantiate(this.playerPrefab, this.playerSpawnPoints[this.effectivePlayerCounter]);
             this.effectivePlayerCounter++;
         }
+    }
+
+    public IEnumerator WaitAndAddPlayerInGame(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        this.AddPlayerInGame();
     }
 }
