@@ -12,15 +12,30 @@ public class PlayerAttack : MonoBehaviour
     [Tooltip("GameObject uses to indicate the weapon direction and reloading power")]
     private GameObject weaponDirectionIndicator; // This is hacky
 
+    [SerializeField]
+    [Tooltip("Weapon used for slot 1")]
+    private WeaponController weapon1;
+
+    [SerializeField]
+    [Tooltip("Weapon used for slot 2")]
+    private WeaponController weapon2;
+
+    [SerializeField]
+    [Tooltip("Weapon used for slot 3")]
+    private WeaponController weapon3;
+
+    private WeaponController currentWeapon; // Internal use
+
     private float effectivePower = 0;
     private bool isChargingPower = false;
-    private WeaponController weaponController;
 
     private void Awake()
     {
-        this.weaponController = this.GetComponent<WeaponController>();
-        Assert.IsNotNull(this.weaponController, "Missing asset (Player must have a WeaponController)");
+        Assert.IsNotNull(this.weapon1, "Missing asset (WeaponController)");
+        Assert.IsNotNull(this.weapon2, "Missing asset (WeaponController)");
+        Assert.IsNotNull(this.weapon3, "Missing asset (WeaponController)");
         Assert.IsNotNull(this.weaponDirectionIndicator, "Missing asset");
+
         Assert.IsTrue(this.chargingTimeInPowerPerSec > 0, "Invalid asset (Charging time value)");
 
         this.weaponDirectionIndicator.SetActive(false);
@@ -31,8 +46,8 @@ public class PlayerAttack : MonoBehaviour
         if(this.isChargingPower)
         {
             this.weaponDirectionIndicator.SetActive(true);
-            float currentPower = Mathf.Clamp(this.effectivePower, 0, this.weaponController.GetCurrentWeapon().GetMaxPower());
-            float percentLoaded = currentPower / this.weaponController.GetCurrentWeapon().GetMaxPower();
+            float currentPower = Mathf.Clamp(this.effectivePower, 0, this.currentWeapon.GetWeaponData().GetMaxPower());
+            float percentLoaded = currentPower / this.currentWeapon.GetWeaponData().GetMaxPower();
             float newScale = percentLoaded * 3; // *3 because in our case, scale goes from 0 to 3 (hacky)
             this.weaponDirectionIndicator.transform.localScale = new Vector3(this.weaponDirectionIndicator.transform.localScale.x, newScale, 1);
             this.effectivePower += this.chargingTimeInPowerPerSec * Time.deltaTime;
@@ -46,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void PrepareFire()
     {
-        if(!this.weaponController.IsCurrentWeaponReloading())
+        if(!this.currentWeapon.IsReloading())
         {
             this.isChargingPower = true;
         }
@@ -54,26 +69,26 @@ public class PlayerAttack : MonoBehaviour
 
     private void Fire()
     {
-        this.weaponController.Fire(this.effectivePower);
+        this.currentWeapon.Fire(this.effectivePower);
         this.isChargingPower = false;
         this.effectivePower = 0;
     }
 
     public void OnInputFire1(InputAction.CallbackContext context)
     {
-        this.weaponController.SelectWeaponAt(0);
+        this.currentWeapon = this.weapon1;
         this.HandleOnputFire(context);
     }
 
     public void OnInputFire2(InputAction.CallbackContext context)
     {
-        this.weaponController.SelectWeaponAt(1);
+        this.currentWeapon = this.weapon2;
         this.HandleOnputFire(context);
     }
 
     public void OnInputFire3(InputAction.CallbackContext context)
     {
-        this.weaponController.SelectWeaponAt(2);
+        this.currentWeapon = this.weapon3;
         this.HandleOnputFire(context);
     }
 

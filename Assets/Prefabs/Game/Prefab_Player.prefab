@@ -500,12 +500,14 @@ GameObject:
   - component: {fileID: 117895076}
   - component: {fileID: 579132739}
   - component: {fileID: 579132738}
+  - component: {fileID: 2492270198347510687}
   - component: {fileID: 579132740}
   - component: {fileID: 320284727}
   - component: {fileID: 3115848290776553216}
   - component: {fileID: 6977977744909153535}
   - component: {fileID: -6973053812911846139}
-  - component: {fileID: 2492270198347510687}
+  - component: {fileID: 7120615256621895054}
+  - component: {fileID: 7831157317432520534}
   m_Layer: 0
   m_Name: Prefab_Player
   m_TagString: Untagged
@@ -717,6 +719,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3821719, y: 1.0718479}
   m_EdgeRadius: 0
+--- !u!95 &2492270198347510687
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696776292164444488}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 541f820a37e27404fb64cad64af4bf58, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &579132740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,6 +765,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargingTimeInPowerPerSec: 40
   weaponDirectionIndicator: {fileID: 4631266565386123599}
+  weapon1: {fileID: -6973053812911846139}
+  weapon2: {fileID: 7120615256621895054}
+  weapon3: {fileID: 7831157317432520534}
 --- !u!114 &3115848290776553216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,38 +826,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a55994246412b1439fc0b82226c9045, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 11400000, guid: 335889cdd233eb44bbdc1b6cda8e2f37, type: 2}
-  - {fileID: 11400000, guid: 202d8cb109be9f9458b2ebcbf735116c, type: 2}
+  weaponData: {fileID: 11400000, guid: 335889cdd233eb44bbdc1b6cda8e2f37, type: 2}
   weaponEndPoint: {fileID: 2104024751}
-  notEnoughPowerEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  noWeaponAvailableEvent:
-    m_PersistentCalls:
-      m_Calls: []
   weaponReloadingEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &2492270198347510687
-Animator:
-  serializedVersion: 3
+  notEnoughPowerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7120615256621895054
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5696776292164444488}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 541f820a37e27404fb64cad64af4bf58, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a55994246412b1439fc0b82226c9045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 202d8cb109be9f9458b2ebcbf735116c, type: 2}
+  weaponEndPoint: {fileID: 2104024751}
+  weaponReloadingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  notEnoughPowerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7831157317432520534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696776292164444488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a55994246412b1439fc0b82226c9045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: e0bc1d5520cb10c4b93908b3e1c64154, type: 2}
+  weaponEndPoint: {fileID: 2104024751}
+  weaponReloadingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  notEnoughPowerEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7772981648562408374
 GameObject:
   m_ObjectHideFlags: 0

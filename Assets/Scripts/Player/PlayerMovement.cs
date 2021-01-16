@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rg2D = null;
     private Vector2 movementDirection = Vector2.zero;
     private float effectiveSpeed = 0.0f;
-    private bool isIdle = true;
 
     private void Awake()
     {
@@ -29,11 +28,9 @@ public class PlayerMovement : MonoBehaviour
         Vector2 newDirection = context.ReadValue<Vector2>();
         if(newDirection == Vector2.zero)
         {
-            this.isIdle = true;
         }
         else
         {
-            this.isIdle = false;
             this.movementDirection = newDirection;
             this.effectiveSpeed = this.movementDirection.magnitude * this.maxMovementSpeedInUnitPerSec;
             float angle = Mathf.Atan2(this.movementDirection.y, this.movementDirection.x);
