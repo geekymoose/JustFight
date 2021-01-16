@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a3b8b4f56b1856489cea1966909ae3c, type: 3}
   m_Name: TargetData_Player
   m_EditorClassIdentifier: 
-  affectedByShots:
-  - {fileID: 11400000, guid: 10b8b111b543935498310af066fc4293, type: 2}
-  - {fileID: 11400000, guid: 4690c04dd0671334fa0f24fe00ed5749, type: 2}
-  - {fileID: 11400000, guid: aa3e205147b992b4491f08a73b4d769d, type: 2}
+  affectedByWeapons:
+  - {fileID: 11400000, guid: 335889cdd233eb44bbdc1b6cda8e2f37, type: 2}
+  - {fileID: 11400000, guid: e0bc1d5520cb10c4b93908b3e1c64154, type: 2}
+  - {fileID: 11400000, guid: 202d8cb109be9f9458b2ebcbf735116c, type: 2}

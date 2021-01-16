@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-[CreateAssetMenu(fileName = "WeaponData", menuName = "ScriptableObjects/WeaponData", order = 1)]
+public enum ShotMovementType
+{
+    HITSCAN,
+    MISSILE,
+    PROJECTILE,
+}
+
+[CreateAssetMenu(fileName = "WeaponData", menuName = "ScriptableObjects/WeaponSystem/WeaponData", order = 1)]
 public class WeaponData : ScriptableObject
 {
     [SerializeField]
-    [Tooltip("The shot that this weapon will shot when firing")]
-    private ShotData shotData;
-
-    [SerializeField]
     [Tooltip("Time it takes for this weapon to reload before next shoot (in seconds)")]
-    private float reloadingSpeedInSec;
+    private float reloadSpeedInSec;
 
     [SerializeField]
     [Tooltip("The maximum power that can be charged in the next shot")]
@@ -21,23 +24,42 @@ public class WeaponData : ScriptableObject
     [Range(0,100)]
     private float minPowerRequiredInPercents;
 
+    [SerializeField]
+    [Tooltip("The prefab to instanciate when the weapon fires")]
+    private GameObject shotPrefab;
+    public GameObject GetShotPrefab() { return this.shotPrefab; }
+
+    [SerializeField]
+    [Tooltip("Type of momement the shot uses")]
+    private ShotMovementType shotMovementType;
+    public ShotMovementType GetShotMovementType() { return this.shotMovementType; }
+
+    [SerializeField]
+    [Tooltip("Shot speed in Unity units (not used if Hitscan)")]
+    [Range(1,100)]
+    private float shotMovementSpeed;
+    public float GetShotMovementSpeed() { return this.shotMovementSpeed; }
+
+    [SerializeField]
+    [Tooltip("Amount of damage the shot does on the target")]
+    [Range(1,500)]
+    private float shotDamageAmount;
+    public float GetShotDamageAmount() { return this.shotDamageAmount; }
+
     private void Awake()
     {
-        Assert.IsNotNull(this.shotData, "Missing asset");
-        Assert.IsTrue(this.reloadingSpeedInSec >= 0, "Invalid assert");
+        Assert.IsTrue(this.reloadSpeedInSec >= 0, "Invalid assert");
         Assert.IsTrue(this.maxPower > 0, "Invalid assert");
         Assert.IsTrue(this.minPowerRequiredInPercents >= 0, "Invalid assert");
         Assert.IsTrue(this.minPowerRequiredInPercents <= 100, "Invalid assert");
+        Assert.IsNotNull(this.shotPrefab, "Missing asset");
+        Assert.IsTrue(this.shotMovementSpeed > 0, "Invalid assert");
+        Assert.IsTrue(this.shotDamageAmount >= 0, "Invalid assert");
     }
 
     public bool IsEnoughPowerToFire(float powerAmount)
     {
         return powerAmount > this.GetMinPowerRequired();
-    }
-
-    public ShotData GetShotData()
-    {
-        return this.shotData;
     }
 
     public float GetMaxPower()
@@ -52,6 +74,6 @@ public class WeaponData : ScriptableObject
 
     public float GetReloadingSpeed()
     {
-        return this.reloadingSpeedInSec;
+        return this.reloadSpeedInSec;
     }
 }

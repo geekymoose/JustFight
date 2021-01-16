@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 
 public class ShotController : MonoBehaviour
 {
-    private ShotData shotData;
+    private WeaponData weaponData;
 
     private ShotMovementMissile movementMissile;
     private ShotMovementProjectile movementProjectile;
@@ -26,8 +26,8 @@ public class ShotController : MonoBehaviour
 
     private void Start()
     {
-        Assert.IsNotNull(this.shotData, "Missing asset");
-        this.SetCurrentShotSpeed(this.shotData.GetShotMovementSpeed());
+        Assert.IsNotNull(this.weaponData, "Missing asset");
+        this.SetCurrentShotSpeed(this.weaponData.GetShotMovementSpeed());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,9 +44,9 @@ public class ShotController : MonoBehaviour
                 {
                     // Shot don't affect the one how sent it
                 }
-                else if(targetData.IsAffectedByShot(this.shotData))
+                else if(targetData.IsAffectedByShot(this.weaponData))
                 {
-                    targetController.TakeDamage(this.shotData.GetDamageAmount());
+                    targetController.TakeDamage(this.weaponData.GetShotDamageAmount());
                 }
             }
         }
@@ -65,26 +65,21 @@ public class ShotController : MonoBehaviour
         this.weaponControllerOwner = owner;
     }
 
-    public WeaponController GetShotOwner()
+    public void SetWeaponData(WeaponData data)
     {
-        return this.weaponControllerOwner;
-    }
+        this.weaponData = data;
 
-    public void SetShowData(ShotData data)
-    {
-        this.shotData = data;
-
-        if(this.shotData.GetShotMovementType() == ShotMovementType.HITSCAN)
+        if(this.weaponData.GetShotMovementType() == ShotMovementType.HITSCAN)
         {
             this.movementMissile.enabled = false;
             this.movementProjectile.enabled = false;
         }
-        else if(this.shotData.GetShotMovementType() == ShotMovementType.MISSILE)
+        else if(this.weaponData.GetShotMovementType() == ShotMovementType.MISSILE)
         {
             this.movementMissile.enabled = true;
             this.movementProjectile.enabled = false;
         }
-        else if(this.shotData.GetShotMovementType() == ShotMovementType.PROJECTILE)
+        else if(this.weaponData.GetShotMovementType() == ShotMovementType.PROJECTILE)
         {
             this.movementMissile.enabled = false;
             this.movementProjectile.enabled = true;

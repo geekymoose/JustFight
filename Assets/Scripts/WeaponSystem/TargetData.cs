@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-[CreateAssetMenu(fileName = "TargetData", menuName = "ScriptableObjects/TargetData", order = 1)]
+[CreateAssetMenu(fileName = "TargetData", menuName = "ScriptableObjects/WeaponSystem/TargetData", order = 1)]
 public class TargetData : ScriptableObject
 {
     [SerializeField]
-    [Tooltip("List of shot that can affect this target")]
-    private List<ShotData> affectedByShots;
+    [Tooltip("List of weapons that can affect this target")]
+    private List<WeaponData> affectedByWeapons;
 
     private void Awake()
     {
-        Assert.IsNotNull(this.affectedByShots, "Missing assets");
+        Assert.IsNotNull(this.affectedByWeapons, "Missing assets");
     }
 
-    public bool IsAffectedByShot(ShotData shotData)
+    public bool IsAffectedByShot(WeaponData weapon)
     {
-        return this.affectedByShots.Contains(shotData);
+        return this.affectedByWeapons.Contains(weapon);
     }
 }

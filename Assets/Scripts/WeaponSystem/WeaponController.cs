@@ -46,13 +46,13 @@ public class WeaponController : MonoBehaviour
             powerAmount = Mathf.Clamp(powerAmount, 0, this.weaponData.GetMaxPower());
             if(weaponData.IsEnoughPowerToFire(powerAmount))
             {
-                GameObject shot = Instantiate(weaponData.GetShotData().getShotPrefab(), this.weaponEndPoint);
+                GameObject shot = Instantiate(weaponData.GetShotPrefab(), this.weaponEndPoint);
                 ShotController shotController = shot.GetComponent<ShotController>();
                 Assert.IsNotNull(shotController, "Shot prefab doesn't have a ShotController component");
                 if(shotController)
                 {
-                    shotController.SetShowData(weaponData.GetShotData());
-                    float shotSpeed = weaponData.GetShotData().GetShotMovementSpeed();
+                    shotController.SetWeaponData(weaponData);
+                    float shotSpeed = weaponData.GetShotMovementSpeed();
                     float effectiveSpeed = (powerAmount / weaponData.GetMaxPower()) * shotSpeed;
                     shotController.SetCurrentShotSpeed(effectiveSpeed);
                     shotController.SetShotOwner(this);
