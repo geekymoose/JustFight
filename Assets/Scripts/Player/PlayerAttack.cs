@@ -14,26 +14,26 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Weapon used for slot 1")]
-    private WeaponController weapon1;
+    private Weapon weapon1;
 
     [SerializeField]
     [Tooltip("Weapon used for slot 2")]
-    private WeaponController weapon2;
+    private Weapon weapon2;
 
     [SerializeField]
     [Tooltip("Weapon used for slot 3")]
-    private WeaponController weapon3;
+    private Weapon weapon3;
 
-    private WeaponController currentWeapon; // Internal use
+    private Weapon currentWeapon; // Internal use
 
     private float effectivePower = 0;
     private bool isChargingPower = false;
 
     private void Awake()
     {
-        Assert.IsNotNull(this.weapon1, "Missing asset (WeaponController)");
-        Assert.IsNotNull(this.weapon2, "Missing asset (WeaponController)");
-        Assert.IsNotNull(this.weapon3, "Missing asset (WeaponController)");
+        Assert.IsNotNull(this.weapon1, "Missing asset (Weapon)");
+        Assert.IsNotNull(this.weapon2, "Missing asset (Weapon)");
+        Assert.IsNotNull(this.weapon3, "Missing asset (Weapon)");
         Assert.IsNotNull(this.weaponDirectionIndicator, "Missing asset");
 
         Assert.IsTrue(this.chargingTimeInPowerPerSec > 0, "Invalid asset (Charging time value)");

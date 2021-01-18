@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
 
-public class WeaponController : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Defines how the weapon actually behaves")]
@@ -61,7 +61,7 @@ public class WeaponController : MonoBehaviour
 
         ShotController shotController = shot.AddComponent<ShotController>();
         shotController.WeaponData = this.weaponData;
-        shotController.WeaponControllerOwner = this;
+        shotController.WeaponOwner = this;
 
         switch(this.weaponData.GetShotMovementType())
         {
