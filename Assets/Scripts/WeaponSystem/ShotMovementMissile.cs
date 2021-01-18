@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 /// Shot that goes forward with the same pace
+[RequireComponent(typeof(Rigidbody2D))]
 public class ShotMovementMissile : MonoBehaviour
 {
     [SerializeField]
@@ -26,6 +27,8 @@ public class ShotMovementMissile : MonoBehaviour
 
     public void SetCurrentSpeed(float speed)
     {
+        Vector2 forward = new Vector2(this.transform.up.x, this.transform.up.y);
+        this.rg.velocity = forward * speed;
         this.speedInUnityForce = speed;
     }
 }

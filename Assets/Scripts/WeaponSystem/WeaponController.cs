@@ -1,16 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
-
 
 public class WeaponController : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Defines how the weapon actually behaves")]
     private WeaponData weaponData;
-    public WeaponData GetWeaponData(){ return this.weaponData; }
 
     [SerializeField]
     [Tooltip("Transform where the projectil spawns")]
@@ -46,24 +42,44 @@ public class WeaponController : MonoBehaviour
             powerAmount = Mathf.Clamp(powerAmount, 0, this.weaponData.GetMaxPower());
             if(weaponData.IsEnoughPowerToFire(powerAmount))
             {
-                GameObject shot = Instantiate(weaponData.GetShotPrefab(), this.weaponEndPoint);
-                ShotController shotController = shot.GetComponent<ShotController>();
-                Assert.IsNotNull(shotController, "Shot prefab doesn't have a ShotController component");
-                if(shotController)
-                {
-                    shotController.SetWeaponData(weaponData);
-                    float shotSpeed = weaponData.GetShotMovementSpeed();
-                    float effectiveSpeed = (powerAmount / weaponData.GetMaxPower()) * shotSpeed;
-                    shotController.SetCurrentShotSpeed(effectiveSpeed);
-                    shotController.SetShotOwner(this);
-                    this.Reload();
-                }
+                float shotSpeed = weaponData.GetShotMovementSpeed();
+                float effectiveSpeed = (powerAmount / weaponData.GetMaxPower()) * shotSpeed;
+                this.InstantiateShot(effectiveSpeed);
+                this.Reload();
             }
             else
             {
                 Debug.Log("Can't fire: not enough power");
                 this.notEnoughPowerEvent.Invoke();
             }
+        }
+    }
+
+    private void InstantiateShot(float speed)
+    {
+        GameObject shot = Instantiate(weaponData.GetShotPrefab(), this.weaponEndPoint);
+
+        ShotController shotController = shot.GetComponent<ShotController>();
+        Assert.IsNotNull(shotController, "Shot prefab doesn't have a ShotController component");
+        shotController.WeaponData = this.weaponData;
+        shotController.WeaponControllerOwner = this;
+
+        switch(this.weaponData.GetShotMovementType())
+        {
+            case ShotMovementType.MISSILE:
+                ShotMovementMissile moveM = shot.gameObject.AddComponent<ShotMovementMissile>();
+                moveM.SetCurrentSpeed(speed);
+                break;
+            case ShotMovementType.PROJECTILE:
+                ShotMovementProjectile moveP = shot.gameObject.AddComponent<ShotMovementProjectile>();
+                moveP.SetCurrentSpeed(speed);
+                break;
+            case ShotMovementType.HITSCAN:
+                // Nothing for now
+                break;
+            default:
+                Assert.IsTrue(false, "ShotMovementType not implemented");
+                break;
         }
     }
 
@@ -75,5 +91,10 @@ public class WeaponController : MonoBehaviour
     public void Reload()
     {
         this.lastUsageTime = Time.time;
+    }
+
+    public WeaponData GetWeaponData()
+    {
+        return this.weaponData;
     }
 }
