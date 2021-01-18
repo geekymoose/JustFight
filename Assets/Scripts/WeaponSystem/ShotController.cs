@@ -27,7 +27,6 @@ public class ShotController : MonoBehaviour
     private void Start()
     {
         Assert.IsNotNull(this.weaponData, "Missing asset");
-        this.SetCurrentShotSpeed(this.weaponData.GetShotMovementSpeed());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
