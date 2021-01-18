@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4734402650989695372}
   - component: {fileID: 1819523528}
   - component: {fileID: 1819523529}
-  - component: {fileID: 4735320769717368377}
   m_Layer: 0
   m_Name: Prefab_ShotBullet
   m_TagString: Untagged
@@ -71,19 +70,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1399726
---- !u!114 &4735320769717368377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3606172235394193537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0898d5c5158a24c448a2e8635494a72d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shotData: {fileID: 11400000, guid: 10b8b111b543935498310af066fc4293, type: 2}
 --- !u!1 &8868231198964237186
 GameObject:
   m_ObjectHideFlags: 0

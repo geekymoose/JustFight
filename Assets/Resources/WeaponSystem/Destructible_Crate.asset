@@ -7,10 +7,10 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a3b8b4f56b1856489cea1966909ae3c, type: 3}
-  m_Name: TargetData_DestructibleHeavy
+  m_Script: {fileID: 11500000, guid: cc304001aabf51cec8cc21781ee51902, type: 3}
+  m_Name: Destructible_Crate
   m_EditorClassIdentifier: 
   affectedByWeapons:
   - {fileID: 11400000, guid: 202d8cb109be9f9458b2ebcbf735116c, type: 2}

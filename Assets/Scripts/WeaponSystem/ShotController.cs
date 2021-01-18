@@ -14,21 +14,21 @@ public class ShotController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        TargetController targetController = collision.gameObject.GetComponent<TargetController>();
+        Destructible destructible = collision.gameObject.GetComponent<Destructible>();
 
-        if(targetController)
+        if(destructible)
         {
-            TargetData targetData = targetController.GetTargetData();
-            Assert.IsNotNull(targetData, "Unexpected TargetController without a targetData");
-            if(targetData)
+            DestructibleData destructibleData = destructible.GetDestructibleData();
+            Assert.IsNotNull(destructibleData, "Missing asset");
+            if(destructibleData)
             {
-                if(targetController.gameObject == this.WeaponControllerOwner.gameObject)
+                if(destructible.gameObject == this.WeaponControllerOwner.gameObject)
                 {
                     // Shot don't affect the one how sent it
                 }
-                else if(targetData.IsAffectedByShot(this.WeaponData))
+                else if(destructibleData.IsAffectedByWeapon(this.WeaponData))
                 {
-                    targetController.TakeDamage(this.WeaponData.GetShotDamageAmount());
+                    destructible.TakeDamage(this.WeaponData.GetShotDamageAmount());
                 }
             }
         }

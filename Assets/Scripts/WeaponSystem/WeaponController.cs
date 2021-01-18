@@ -59,8 +59,7 @@ public class WeaponController : MonoBehaviour
     {
         GameObject shot = Instantiate(weaponData.GetShotPrefab(), this.weaponEndPoint);
 
-        ShotController shotController = shot.GetComponent<ShotController>();
-        Assert.IsNotNull(shotController, "Shot prefab doesn't have a ShotController component");
+        ShotController shotController = shot.AddComponent<ShotController>();
         shotController.WeaponData = this.weaponData;
         shotController.WeaponControllerOwner = this;
 

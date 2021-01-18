@@ -8,7 +8,7 @@ public enum ShotMovementType
     PROJECTILE,
 }
 
-[CreateAssetMenu(fileName = "WeaponData", menuName = "ScriptableObjects/WeaponSystem/WeaponData", order = 1)]
+[CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObjects/WeaponSystem/Weapon", order = 1)]
 public class WeaponData : ScriptableObject
 {
     [SerializeField]

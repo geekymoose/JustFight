@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63aca1cb12d55b748855b6b525808654, type: 3}
-  m_Name: WeaponData_RocketLauncher
+  m_Name: Weapon_Rocket
   m_EditorClassIdentifier: 
   reloadSpeedInSec: 1
   maxPower: 10

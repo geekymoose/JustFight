@@ -8,7 +8,7 @@ Tank:
     ☐ Divide the movement from the shooting direction (input to move, input to target)
     ☐ Add tank color for each player
 WeaponSystem:
-    ☐ Cleanup the ShotData (integrate it in the Weapon to make it easier to use)
+    ✔ Cleanup the ShotData (integrate it in the Weapon to make it easier to use) @done(21-01-16 01:53)
     ☐ Implement the hitscan type
     ☐ Add impact / explosion component
     ☐ Add projectile life time
