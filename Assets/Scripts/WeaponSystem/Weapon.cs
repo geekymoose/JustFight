@@ -12,66 +12,77 @@ public class Weapon : MonoBehaviour
     [Tooltip("Transform where the projectil spawns")]
     private Transform weaponEndPoint;
 
-    [SerializeField]
-    [Tooltip("Event raised when trying to fire but the weapon is still reloading")]
-    private UnityEvent weaponReloadingEvent;
-
-    [SerializeField]
-    [Tooltip("Event raised when trying to fire but there is not enough energy")]
-    private UnityEvent notEnoughPowerEvent;
-
-    private float lastUsageTime; // When the weapon was last used (used for reload)
+    private WeaponFiringType currentWeaponFiringType;
 
     private void Awake()
     {
         Assert.IsNotNull(this.weaponData, "Missing asset (WeaponData required)");
         Assert.IsNotNull(this.weaponEndPoint, "Missing asset (The weapon must have a fireing endpoint)");
 
-        this.lastUsageTime = 0;
+        // TODO Actuall set the weapon firing type
+        this.currentWeaponFiringType = new WeaponFiringTypeChargeFire(this);
     }
 
-    public void Fire(float powerAmount)
+    public void PrepareFire()
     {
-        if(this.IsReloading())
-        {
-            Debug.Log("Unable to shoot: the weapon is still reloading");
-            this.weaponReloadingEvent.Invoke();
-        }
-        else
-        {
-            powerAmount = Mathf.Clamp(powerAmount, 0, this.weaponData.GetMaxPower());
-            if(weaponData.IsEnoughPowerToFire(powerAmount))
-            {
-                float shotSpeed = weaponData.GetShotMovementSpeed();
-                float effectiveSpeed = (powerAmount / weaponData.GetMaxPower()) * shotSpeed;
-                this.InstantiateShot(effectiveSpeed);
-                this.Reload();
-            }
-            else
-            {
-                Debug.Log("Can't fire: not enough power");
-                this.notEnoughPowerEvent.Invoke();
-            }
-        }
+        this.currentWeaponFiringType.PrepareFire();
     }
 
-    private void InstantiateShot(float speed)
+    public void HoldFire()
     {
-        GameObject shot = Instantiate(weaponData.GetShotPrefab(), this.weaponEndPoint);
+        this.currentWeaponFiringType.HoldFire();
+    }
+
+    public void Fire()
+    {
+        this.currentWeaponFiringType.Fire();
+    }
+
+    public bool IsReloading()
+    {
+        return this.currentWeaponFiringType.IsReloading();
+    }
+
+    public void Reload()
+    {
+        this.currentWeaponFiringType.Reload();
+    }
+
+    public float CurrentChargedPowerInPercent()
+    {
+        return this.currentWeaponFiringType.CurrentChargedPowerInPercent();
+    }
+
+    public bool IsChargingPower()
+    {
+        return this.currentWeaponFiringType.IsChargingPower();
+    }
+
+    public WeaponData GetWeaponData()
+    {
+        return this.weaponData;
+    }
+
+    public void InstantiateShot(float power)
+    {
+        GameObject shot = Instantiate(weaponData.ShotPrefab, this.weaponEndPoint);
 
         ShotController shotController = shot.AddComponent<ShotController>();
         shotController.WeaponData = this.weaponData;
         shotController.WeaponOwner = this;
+        float speed = weaponData.ShotMovementSpeed * (power/100); // power in %, fall back to 0-1
+        Debug.Log(speed);
 
-        switch(this.weaponData.GetShotMovementType())
+
+        switch(this.weaponData.ShotMovementType)
         {
             case ShotMovementType.MISSILE:
                 ShotMovementMissile moveM = shot.gameObject.AddComponent<ShotMovementMissile>();
-                moveM.SetCurrentSpeed(speed);
+                moveM.SetCurrentSpeed(power);
                 break;
             case ShotMovementType.PROJECTILE:
                 ShotMovementProjectile moveP = shot.gameObject.AddComponent<ShotMovementProjectile>();
-                moveP.SetCurrentSpeed(speed);
+                moveP.SetCurrentSpeed(power);
                 break;
             case ShotMovementType.HITSCAN:
                 // Nothing for now
@@ -80,20 +91,5 @@ public class Weapon : MonoBehaviour
                 Assert.IsTrue(false, "ShotMovementType not implemented");
                 break;
         }
-    }
-
-    public bool IsReloading()
-    {
-        return Time.time <= this.lastUsageTime + this.weaponData.GetReloadingSpeed();
-    }
-
-    public void Reload()
-    {
-        this.lastUsageTime = Time.time;
-    }
-
-    public WeaponData GetWeaponData()
-    {
-        return this.weaponData;
     }
 }

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63aca1cb12d55b748855b6b525808654, type: 3}
   m_Name: Weapon_Gun
   m_EditorClassIdentifier: 
-  reloadSpeedInSec: 0.2
-  maxPower: 10
-  minPowerRequiredInPercents: 2
-  shotPrefab: {fileID: 3606172235394193537, guid: 793f6f81317646443b8945951deefc6f,
+  ShotPrefab: {fileID: 3606172235394193537, guid: 793f6f81317646443b8945951deefc6f,
     type: 3}
-  shotMovementType: 2
-  shotMovementSpeed: 15
-  shotDamageAmount: 40
+  ReloadSpeedInSec: 0.2
+  FiringType: 1
+  FullPowerChargingSpeedInSec: 1
+  MinPowerRequiredInPercent: 0
+  ShotMovementType: 2
+  ShotMovementSpeed: 20
+  ShotDamageAmount: 40

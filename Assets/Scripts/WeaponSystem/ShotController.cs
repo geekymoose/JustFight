@@ -28,7 +28,7 @@ public class ShotController : MonoBehaviour
                 }
                 else if(destructibleData.IsAffectedByWeapon(this.WeaponData))
                 {
-                    destructible.TakeDamage(this.WeaponData.GetShotDamageAmount());
+                    destructible.TakeDamage(this.WeaponData.ShotDamageAmount);
                 }
             }
         }

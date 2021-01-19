@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63aca1cb12d55b748855b6b525808654, type: 3}
   m_Name: Weapon_Laser
   m_EditorClassIdentifier: 
-  reloadSpeedInSec: 5
-  maxPower: 100
-  minPowerRequiredInPercents: 60
-  shotPrefab: {fileID: 4461884403967580548, guid: e49e71bdd07ea514faf9344fce1b3ad2,
+  ShotPrefab: {fileID: 4461884403967580548, guid: e49e71bdd07ea514faf9344fce1b3ad2,
     type: 3}
-  shotMovementType: 0
-  shotMovementSpeed: 1
-  shotDamageAmount: 100
+  ReloadSpeedInSec: 0
+  FiringType: 0
+  FullPowerChargingDurationInSec: 0
+  MinPowerRequiredInPercent: 0
+  ShotMovementType: 0
+  ShotMovementSpeed: 0
+  ShotDamageAmount: 0

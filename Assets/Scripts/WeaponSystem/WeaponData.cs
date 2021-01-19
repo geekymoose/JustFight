@@ -11,69 +11,42 @@ public enum ShotMovementType
 [CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObjects/WeaponSystem/Weapon", order = 1)]
 public class WeaponData : ScriptableObject
 {
-    [SerializeField]
+    [Tooltip("The prefab to instanciate when the weapon fires")]
+    public GameObject ShotPrefab;
+
     [Tooltip("Time it takes for this weapon to reload before next shoot (in seconds)")]
-    private float reloadSpeedInSec;
+    [Range(0,10)]
+    public float ReloadSpeedInSec;
 
-    [SerializeField]
-    [Tooltip("The maximum power that can be charged in the next shot")]
-    private float maxPower;
+    [Tooltip("Type of fire this weapon uses")]
+    public WeaponFiringTypeEnum FiringType;
 
-    [SerializeField]
+    [Tooltip("This is the time it takes to be fully loaded")]
+    [Range(0,10)]
+    public float FullPowerChargingSpeedInSec;
+
     [Tooltip("Minimum power required to fire a shot (in % of the max power required)")]
     [Range(0,100)]
-    private float minPowerRequiredInPercents;
+    public float MinPowerRequiredInPercent;
 
-    [SerializeField]
-    [Tooltip("The prefab to instanciate when the weapon fires")]
-    private GameObject shotPrefab;
-    public GameObject GetShotPrefab() { return this.shotPrefab; }
-
-    [SerializeField]
     [Tooltip("Type of momement the shot uses")]
-    private ShotMovementType shotMovementType;
-    public ShotMovementType GetShotMovementType() { return this.shotMovementType; }
+    public ShotMovementType ShotMovementType;
 
-    [SerializeField]
     [Tooltip("Shot speed in Unity units (not used if Hitscan)")]
-    [Range(1,100)]
-    private float shotMovementSpeed;
-    public float GetShotMovementSpeed() { return this.shotMovementSpeed; }
+    [Range(1,30)]
+    public float ShotMovementSpeed;
 
-    [SerializeField]
     [Tooltip("Amount of damage the shot does on the target")]
-    [Range(1,500)]
-    private float shotDamageAmount;
-    public float GetShotDamageAmount() { return this.shotDamageAmount; }
+    [Range(1,200)]
+    public float ShotDamageAmount;
 
     private void Awake()
     {
-        Assert.IsTrue(this.reloadSpeedInSec >= 0, "Invalid assert");
-        Assert.IsTrue(this.maxPower > 0, "Invalid assert");
-        Assert.IsTrue(this.minPowerRequiredInPercents >= 0, "Invalid assert");
-        Assert.IsTrue(this.minPowerRequiredInPercents <= 100, "Invalid assert");
-        Assert.IsNotNull(this.shotPrefab, "Missing asset");
-        Assert.IsTrue(this.shotMovementSpeed > 0, "Invalid assert");
-        Assert.IsTrue(this.shotDamageAmount >= 0, "Invalid assert");
+        Assert.IsNotNull(this.ShotPrefab, "Missing asset");
     }
 
-    public bool IsEnoughPowerToFire(float powerAmount)
+    public bool IsEnoughPowerToFire(float powerPercentCharge)
     {
-        return powerAmount > this.GetMinPowerRequired();
-    }
-
-    public float GetMaxPower()
-    {
-        return this.maxPower;
-    }
-
-    public float GetMinPowerRequired()
-    {
-        return (this.maxPower / 100) * this.minPowerRequiredInPercents;
-    }
-
-    public float GetReloadingSpeed()
-    {
-        return this.reloadSpeedInSec;
+        return powerPercentCharge >= this.MinPowerRequiredInPercent;
     }
 }

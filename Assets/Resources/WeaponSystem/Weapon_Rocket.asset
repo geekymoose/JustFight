@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63aca1cb12d55b748855b6b525808654, type: 3}
   m_Name: Weapon_Rocket
   m_EditorClassIdentifier: 
-  reloadSpeedInSec: 1
-  maxPower: 10
-  minPowerRequiredInPercents: 0
-  shotPrefab: {fileID: 6145737065582151281, guid: b0b24cc971dddc248be80e00ac9fe727,
+  ShotPrefab: {fileID: 6145737065582151281, guid: b0b24cc971dddc248be80e00ac9fe727,
     type: 3}
-  shotMovementType: 1
-  shotMovementSpeed: 5
-  shotDamageAmount: 200
+  ReloadSpeedInSec: 1
+  FiringType: 0
+  FullPowerChargingDurationInSec: 0
+  MinPowerRequiredInPercent: 0
+  ShotMovementType: 1
+  ShotMovementSpeed: 0
+  ShotDamageAmount: 0
