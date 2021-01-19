@@ -19,8 +19,18 @@ public class Weapon : MonoBehaviour
         Assert.IsNotNull(this.weaponData, "Missing asset (WeaponData required)");
         Assert.IsNotNull(this.weaponEndPoint, "Missing asset (The weapon must have a fireing endpoint)");
 
-        // TODO Actuall set the weapon firing type
-        this.currentWeaponFiringType = new WeaponFiringTypeChargeFire(this);
+        switch(this.weaponData.FiringType)
+        {
+            case WeaponFiringTypeEnum.INSTANT_FIRE:
+                this.currentWeaponFiringType = new WeaponFiringTypeInstant(this);
+                break;
+            case WeaponFiringTypeEnum.CHARGE_THEN_FIRE:
+                this.currentWeaponFiringType = new WeaponFiringTypeChargeFire(this);
+                break;
+            case WeaponFiringTypeEnum.HOLD_TO_FIRE:
+                this.currentWeaponFiringType = new WeaponFiringTypeHoldFire(this);
+                break;
+        }
     }
 
     public void PressFire()
@@ -70,17 +80,17 @@ public class Weapon : MonoBehaviour
         ShotController shotController = shot.AddComponent<ShotController>();
         shotController.WeaponData = this.weaponData;
         shotController.WeaponOwner = this;
-        float speed = weaponData.ShotMovementSpeed * (power/100); // power in %, fall back to 0-1
+        float speed = weaponData.ShotMovementSpeed * (power / 100); // power in %, fall back to 0-1
 
         switch(this.weaponData.ShotMovementType)
         {
             case ShotMovementType.MISSILE:
                 ShotMovementMissile moveM = shot.gameObject.AddComponent<ShotMovementMissile>();
-                moveM.SetCurrentSpeed(power);
+                moveM.SetCurrentSpeed(speed);
                 break;
             case ShotMovementType.PROJECTILE:
                 ShotMovementProjectile moveP = shot.gameObject.AddComponent<ShotMovementProjectile>();
-                moveP.SetCurrentSpeed(power);
+                moveP.SetCurrentSpeed(speed);
                 break;
             case ShotMovementType.HITSCAN:
                 // Nothing for now

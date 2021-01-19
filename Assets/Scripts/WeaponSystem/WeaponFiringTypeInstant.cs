@@ -17,7 +17,12 @@ public class WeaponFiringTypeInstant : WeaponFiringType
 
     public void PressFire()
     {
-        // Todo apply shot here
+        if(!this.IsReloading())
+        {
+            float currentPower = this.CurrentChargedPowerInPercent();
+            this.weapon.InstantiateShot(100);
+            this.Reload();
+        }
     }
 
     public void HoldFire()

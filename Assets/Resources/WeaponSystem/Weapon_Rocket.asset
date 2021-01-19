@@ -16,8 +16,8 @@ MonoBehaviour:
     type: 3}
   ReloadSpeedInSec: 1
   FiringType: 0
-  FullPowerChargingDurationInSec: 0
+  FullPowerChargingSpeedInSec: 0
   MinPowerRequiredInPercent: 0
   ShotMovementType: 1
-  ShotMovementSpeed: 0
-  ShotDamageAmount: 0
+  ShotMovementSpeed: 5
+  ShotDamageAmount: 100

@@ -19,5 +19,5 @@ MonoBehaviour:
   FullPowerChargingSpeedInSec: 1
   MinPowerRequiredInPercent: 0
   ShotMovementType: 2
-  ShotMovementSpeed: 20
+  ShotMovementSpeed: 10
   ShotDamageAmount: 40
