@@ -8,7 +8,7 @@ public class GameEventListener : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Event that this GameObejct is listening to")]
-    private GameEvent gameevent;
+    private GameEvent gameEvent;
 
     [SerializeField]
     [Tooltip("Response that will be fired whenever the GameEvent is raised")]
@@ -16,12 +16,12 @@ public class GameEventListener : MonoBehaviour
 
     private void OnEnable()
     {
-        this.gameevent.RegisterListener(this);
+        this.gameEvent.RegisterListener(this);
     }
 
     private void OnDisable()
     {
-        this.gameevent.UnregisterListener(this);
+        this.gameEvent.UnregisterListener(this);
     }
 
     public void OnEventRaised()

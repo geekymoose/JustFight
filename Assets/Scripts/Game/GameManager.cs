@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerKilled()
     {
+        Debug.Log("X");
         this.effectivePlayerCounter--;
         IEnumerator coroutine = WaitAndAddPlayerInGame(2.0f);
         StartCoroutine(coroutine);

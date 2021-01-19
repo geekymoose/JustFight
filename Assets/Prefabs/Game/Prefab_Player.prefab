@@ -750,6 +750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2077594692bff7440addf14c754f92a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerKilledEvent: {fileID: 11400000, guid: c53b716d208a7f0478473f500218b905, type: 2}
   maxMovementSpeedInUnitPerSec: 5
 --- !u!114 &320284727
 MonoBehaviour:
@@ -763,6 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8d261c0fbe6da49a02780d145f5938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerKilledEvent: {fileID: 11400000, guid: c53b716d208a7f0478473f500218b905, type: 2}
   chargingTimeInPowerPerSec: 40
   weaponDirectionIndicator: {fileID: 4631266565386123599}
   weapon1: {fileID: -6973053812911846139}

@@ -234,7 +234,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -306,6 +306,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3695334623919467120, guid: 7b5bf83d622e38447ae43ea311bf7c96,
+        type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: c53b716d208a7f0478473f500218b905,
+        type: 2}
     - target: {fileID: 3695334623919467121, guid: 7b5bf83d622e38447ae43ea311bf7c96,
         type: 3}
       propertyPath: playerSpawnPoints.Array.data[0]
