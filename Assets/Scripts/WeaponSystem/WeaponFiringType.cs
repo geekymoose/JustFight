@@ -1,18 +1,19 @@
+
 public enum WeaponFiringTypeEnum
 {
-    INSTANT_FIRE, // The shot always use the max power (you press, you shot full power)
-    CHARGE_THEN_FIRE, // You press to charge the shot, you release to fire
-    HOLD_TO_FIRE, // Continuously fire while pressing
+    INSTANT_FIRE,
+    CHARGE_THEN_FIRE,
+    HOLD_TO_FIRE,       /// Continuously fire while pressing
 }
 
 public interface WeaponFiringType
 {
-    void PrepareFire();
+    void PressFire();
     void HoldFire();
-    void Fire();
+    void ReleaseFire();
 
-    bool IsReloading();
     void Reload();
+    bool IsReloading();
 
     float CurrentChargedPowerInPercent();
     bool IsChargingPower();

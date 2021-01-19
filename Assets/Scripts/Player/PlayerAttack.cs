@@ -48,14 +48,14 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void PrepareFire()
+    private void PressFire()
     {
-        this.currentWeapon.PrepareFire();
+        this.currentWeapon.PressFire();
     }
 
-    private void Fire()
+    private void ReleaseFire()
     {
-        this.currentWeapon.Fire();
+        this.currentWeapon.ReleaseFire();
     }
 
     public void OnInputFire1(InputAction.CallbackContext context)
@@ -82,11 +82,11 @@ public class PlayerAttack : MonoBehaviour
         {
             case InputActionPhase.Started:
                 // Button pressed
-                this.PrepareFire();
+                this.PressFire();
                 break;
             case InputActionPhase.Canceled:
                 // Button released
-                this.Fire();
+                this.ReleaseFire();
                 break;
         }
     }

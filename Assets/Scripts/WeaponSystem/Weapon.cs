@@ -23,9 +23,9 @@ public class Weapon : MonoBehaviour
         this.currentWeaponFiringType = new WeaponFiringTypeChargeFire(this);
     }
 
-    public void PrepareFire()
+    public void PressFire()
     {
-        this.currentWeaponFiringType.PrepareFire();
+        this.currentWeaponFiringType.PressFire();
     }
 
     public void HoldFire()
@@ -33,19 +33,19 @@ public class Weapon : MonoBehaviour
         this.currentWeaponFiringType.HoldFire();
     }
 
-    public void Fire()
+    public void ReleaseFire()
     {
-        this.currentWeaponFiringType.Fire();
-    }
-
-    public bool IsReloading()
-    {
-        return this.currentWeaponFiringType.IsReloading();
+        this.currentWeaponFiringType.ReleaseFire();
     }
 
     public void Reload()
     {
         this.currentWeaponFiringType.Reload();
+    }
+
+    public bool IsReloading()
+    {
+        return this.currentWeaponFiringType.IsReloading();
     }
 
     public float CurrentChargedPowerInPercent()
@@ -71,8 +71,6 @@ public class Weapon : MonoBehaviour
         shotController.WeaponData = this.weaponData;
         shotController.WeaponOwner = this;
         float speed = weaponData.ShotMovementSpeed * (power/100); // power in %, fall back to 0-1
-        Debug.Log(speed);
-
 
         switch(this.weaponData.ShotMovementType)
         {

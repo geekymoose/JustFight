@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// You press to charge the shot, you release to fire
 public class WeaponFiringTypeChargeFire : WeaponFiringType
 {
     private Weapon weapon;
@@ -18,7 +19,7 @@ public class WeaponFiringTypeChargeFire : WeaponFiringType
         this.isChargingPower = false;
     }
 
-    public void PrepareFire()
+    public void PressFire()
     {
         if(!this.IsReloading() && !this.IsChargingPower())
         {
@@ -29,10 +30,20 @@ public class WeaponFiringTypeChargeFire : WeaponFiringType
 
     public void HoldFire()
     {
-        // Nothing to do
+        if(!this.IsReloading() && this.IsChargingPower())
+        {
+            if(this.CurrentChargedPowerInPercent() >= 100)
+            {
+                this.ReleaseFire();
+            }
+        }
+        else
+        {
+            this.PressFire();
+        }
     }
 
-    public void Fire()
+    public void ReleaseFire()
     {
         if(!this.IsReloading() && this.IsChargingPower())
         {
@@ -64,14 +75,15 @@ public class WeaponFiringTypeChargeFire : WeaponFiringType
         return this.isChargingPower;
     }
 
-    public bool IsReloading()
-    {
-        return Time.time <= this.lastFireTime + this.weapon.GetWeaponData().ReloadSpeedInSec;
-    }
-
     public void Reload()
     {
         this.isChargingPower = false;
         this.lastFireTime = Time.time;
     }
+
+    public bool IsReloading()
+    {
+        return Time.time <= this.lastFireTime + this.weapon.GetWeaponData().ReloadSpeedInSec;
+    }
+
 }
