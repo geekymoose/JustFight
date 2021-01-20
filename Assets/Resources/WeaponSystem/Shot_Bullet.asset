@@ -15,6 +15,6 @@ MonoBehaviour:
   ShotMovementType: 2
   ShotMovementSpeed: 20
   ShotDamageAmount: 40
-  affectsEnemyShots: 1
-  affectsFriendlyShots: 0
-  affectsShooter: 1
+  collidesWithEnemyShots: 0
+  collidesWithFriendlyShots: 0
+  collidesWithFriends: 0

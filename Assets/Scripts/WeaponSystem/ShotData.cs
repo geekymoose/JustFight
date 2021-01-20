@@ -21,12 +21,12 @@ public class ShotData : ScriptableObject
     [Tooltip("Amount of damage the shot does on the target")]
     public float ShotDamageAmount = 1;
 
-    [Tooltip("If true, this shot applies its effects when colliding with enemy shots")]
-    public bool affectsEnemyShots = false;
+    [Tooltip("If false, this shot passes through enemy shots (no collision)")]
+    public bool collidesWithEnemyShots = false;
 
-    [Tooltip("If true, this shot applies its effects when colliding with friendly shots")]
-    public bool affectsFriendlyShots = false;
+    [Tooltip("If false, this shot passes through friendly shots (no collision)")]
+    public bool collidesWithFriendlyShots = false;
 
-    [Tooltip("If true, this shot applies its effects when colliding the one who shot it")]
-    public bool affectsShooter = false;
+    [Tooltip("If false, this shot passes through friends")]
+    public bool collidesWithFriends = false;
 }

@@ -20,7 +20,28 @@ public class ShotController : MonoBehaviour
         Destructible destructible = collision.gameObject.GetComponent<Destructible>();
         ShotController shotController = collision.gameObject.GetComponent<ShotController>();
 
-        if(destructible)
+        // Special case of collision with another shot
+        if(shotController)
+        {
+            bool isFriendlyShot = shotController.WeaponOwner == this.WeaponOwner;
+            bool isEnemyShot = shotController.WeaponOwner != this.WeaponOwner;
+
+            bool applyCollision = false;
+            if(isFriendlyShot && this.ShotData.collidesWithFriendlyShots)
+            {
+                applyCollision = true;
+            }
+            else if(isEnemyShot && this.ShotData.collidesWithEnemyShots)
+            {
+                applyCollision = true;
+            }
+
+            if(applyCollision)
+            {
+                this.ApplyOnImpact();
+            }
+        }
+        else if(destructible)
         {
             DestructibleData destructibleData = destructible.GetDestructibleData();
             Assert.IsNotNull(destructibleData, "Missing asset"); // Internal error (DestructibleData required)
@@ -29,7 +50,7 @@ public class ShotController : MonoBehaviour
                 bool collidesWithOwner = (destructible.gameObject == this.WeaponOwner.gameObject);
                 if(collidesWithOwner)
                 {
-                    if(this.ShotData.affectsShooter)
+                    if(this.ShotData.collidesWithFriends)
                     {
                         this.ApplyOnImpact();
                     }
@@ -39,22 +60,6 @@ public class ShotController : MonoBehaviour
                     destructible.TakeDamage(this.ShotData.ShotDamageAmount);
                     this.ApplyOnImpact();
                 }
-            }
-        }
-        else if(shotController)
-        {
-            // TODO warning: if a shot is "Destructible", these check are bypassed
-            // This is because the `if(destructible)` is used instead
-            bool isFriendlyShot = shotController.WeaponOwner == this.WeaponOwner;
-            bool isEnemyShot = shotController.WeaponOwner != this.WeaponOwner;
-
-            if(isFriendlyShot && this.ShotData.affectsFriendlyShots)
-            {
-                this.ApplyOnImpact();
-            }
-            else if(isEnemyShot && this.ShotData.affectsEnemyShots)
-            {
-                this.ApplyOnImpact();
             }
         }
         else

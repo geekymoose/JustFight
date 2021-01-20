@@ -7,14 +7,14 @@ public class WeaponData : ScriptableObject
     [Tooltip("The prefab to instanciate when the weapon fires")]
     public ShotController ShotControllerPrefab;
 
-    [Range(0, 10)]
+    [Range(0, 5)]
     [Tooltip("Time it takes for this weapon to reload before next shoot (in seconds)")]
     public float ReloadSpeedInSec = 1.0f;
 
     [Tooltip("Type of fire this weapon uses")]
     public WeaponFiringTypeEnum FiringType = WeaponFiringTypeEnum.CHARGE_THEN_FIRE;
 
-    [Range(0, 10)]
+    [Range(0, 5)]
     [Tooltip("This is the time it takes to be fully loaded")]
     public float FullPowerChargingSpeedInSec = 0.5f;
 
