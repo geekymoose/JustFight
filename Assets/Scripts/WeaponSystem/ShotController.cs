@@ -3,36 +3,110 @@ using UnityEngine.Assertions;
 
 public class ShotController : MonoBehaviour
 {
-    public WeaponData WeaponData { get; set; }
+    [SerializeField]
+    [Tooltip("The data used for this shot")]
+    private ShotData ShotData;
+
     public Weapon WeaponOwner { get; set;} // The one who did the shot
 
     private void Start()
     {
-        Assert.IsNotNull(this.WeaponData, "Missing asset");
-        Assert.IsNotNull(this.WeaponOwner, "Missing asset");
+        Assert.IsNotNull(this.ShotData, "Missing asset");
+        //Assert.IsNotNull(this.WeaponOwner, "Missing asset"); // TODO
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destructible destructible = collision.gameObject.GetComponent<Destructible>();
+        ShotController shotController = collision.gameObject.GetComponent<ShotController>();
 
         if(destructible)
         {
             DestructibleData destructibleData = destructible.GetDestructibleData();
-            Assert.IsNotNull(destructibleData, "Missing asset");
+            Assert.IsNotNull(destructibleData, "Missing asset"); // Internal error (DestructibleData required)
             if(destructibleData)
             {
-                if(destructible.gameObject == this.WeaponOwner.gameObject)
+                bool collidesWithOwner = (destructible.gameObject == this.WeaponOwner.gameObject);
+                if(collidesWithOwner)
                 {
-                    // Shot don't affect the one how sent it
+                    if(this.ShotData.affectsShooter)
+                    {
+                        this.ApplyOnImpact();
+                    }
                 }
-                else if(destructibleData.IsAffectedByWeapon(this.WeaponData))
+                else if(destructibleData.IsAffectedByShot(this.ShotData))
                 {
-                    destructible.TakeDamage(this.WeaponData.ShotDamageAmount);
+                    destructible.TakeDamage(this.ShotData.ShotDamageAmount);
+                    this.ApplyOnImpact();
                 }
             }
         }
+        else if(shotController)
+        {
+            // TODO warning: if a shot is "Destructible", these check are bypassed
+            // This is because the `if(destructible)` is used instead
+            bool isFriendlyShot = shotController.WeaponOwner == this.WeaponOwner;
+            bool isEnemyShot = shotController.WeaponOwner != this.WeaponOwner;
 
-        GameObject.Destroy(this.gameObject); // TODO update with a better "Impact" system
+            if(isFriendlyShot && this.ShotData.affectsFriendlyShots)
+            {
+                this.ApplyOnImpact();
+            }
+            else if(isEnemyShot && this.ShotData.affectsEnemyShots)
+            {
+                this.ApplyOnImpact();
+            }
+        }
+        else
+        {
+            this.ApplyOnImpact();
+        }
+    }
+
+    private void ApplyOnImpact()
+    {
+        // TODO Apply the "OnImpact" events
+        // TODO Change destroy with anim
+        GameObject.Destroy(this.gameObject);
+    }
+
+    public void SetShotData(ShotData shotData)
+    {
+        this.ShotData = shotData;
+    }
+
+    public void SetShotOwner(Weapon owner)
+    {
+        this.WeaponOwner = owner;
+    }
+
+    public static void InstantiateShot(Weapon owner, ShotController shotPrefab, Transform origin, float power)
+    {
+        GameObject newObject = Instantiate(shotPrefab.gameObject, origin);
+        ShotController newShotController = newObject.GetComponent<ShotController>();
+        Assert.IsNotNull(newShotController, "Missing component");
+        ShotData shotData = shotPrefab.ShotData;
+        float speed = shotData.ShotMovementSpeed * (power / 100); // power in %, fall back to 0-1
+
+        newShotController.SetShotData(shotData);
+        newShotController.SetShotOwner(owner);
+
+        switch(shotData.ShotMovementType)
+        {
+            case ShotMovementType.MISSILE:
+                ShotMovementMissile moveM = newObject.AddComponent<ShotMovementMissile>();
+                moveM.SetCurrentSpeed(speed);
+                break;
+            case ShotMovementType.PROJECTILE:
+                ShotMovementProjectile moveP = newObject.AddComponent<ShotMovementProjectile>();
+                moveP.SetCurrentSpeed(speed);
+                break;
+            case ShotMovementType.HITSCAN:
+                // Nothing for now
+                break;
+            default:
+                Assert.IsTrue(false, "ShotMovementType not implemented");
+                break;
+        }
     }
 }

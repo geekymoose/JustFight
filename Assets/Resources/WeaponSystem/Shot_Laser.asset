@@ -7,10 +7,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc304001aabf51cec8cc21781ee51902, type: 3}
-  m_Name: Destructible_Bush
+  m_Script: {fileID: 11500000, guid: 53e6fac04005c934293f3ba0080eedd2, type: 3}
+  m_Name: Shot_Laser
   m_EditorClassIdentifier: 
-  affectedByShots:
-  - {fileID: 11400000, guid: c3f9fb94637d1f84791aa581f5e2f88b, type: 2}
+  ShotMovementType: 2
+  ShotMovementSpeed: 5
+  ShotDamageAmount: 1
+  affectsEnemyShots: 0
+  affectsFriendlyShots: 0
+  affectsShooter: 0

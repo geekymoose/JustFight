@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1162744278736677089}
   - component: {fileID: 1661180322923571723}
   - component: {fileID: -7632590603523216171}
+  - component: {fileID: 9091763820231570486}
   m_Layer: 0
   m_Name: Prefab_ShotRocket
   m_TagString: Untagged
@@ -70,6 +71,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1529473
+--- !u!114 &9091763820231570486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6145737065582151281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0898d5c5158a24c448a2e8635494a72d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShotData: {fileID: 11400000, guid: 6fecdfdc1820c4541a060a71e95e6987, type: 2}
 --- !u!1 &8837775780085171271
 GameObject:
   m_ObjectHideFlags: 0

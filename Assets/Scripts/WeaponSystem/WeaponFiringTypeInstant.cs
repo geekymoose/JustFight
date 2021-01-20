@@ -19,8 +19,7 @@ public class WeaponFiringTypeInstant : WeaponFiringType
     {
         if(!this.IsReloading())
         {
-            float currentPower = this.CurrentChargedPowerInPercent();
-            this.weapon.InstantiateShot(100);
+            this.weapon.InstantiateNewShot(100);
             this.Reload();
         }
     }

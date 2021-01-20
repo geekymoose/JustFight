@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Events;
 
 public class Weapon : MonoBehaviour
 {
@@ -73,31 +72,8 @@ public class Weapon : MonoBehaviour
         return this.weaponData;
     }
 
-    public void InstantiateShot(float power)
+    public void InstantiateNewShot(float power)
     {
-        GameObject shot = Instantiate(weaponData.ShotPrefab, this.weaponEndPoint);
-
-        ShotController shotController = shot.AddComponent<ShotController>();
-        shotController.WeaponData = this.weaponData;
-        shotController.WeaponOwner = this;
-        float speed = weaponData.ShotMovementSpeed * (power / 100); // power in %, fall back to 0-1
-
-        switch(this.weaponData.ShotMovementType)
-        {
-            case ShotMovementType.MISSILE:
-                ShotMovementMissile moveM = shot.gameObject.AddComponent<ShotMovementMissile>();
-                moveM.SetCurrentSpeed(speed);
-                break;
-            case ShotMovementType.PROJECTILE:
-                ShotMovementProjectile moveP = shot.gameObject.AddComponent<ShotMovementProjectile>();
-                moveP.SetCurrentSpeed(speed);
-                break;
-            case ShotMovementType.HITSCAN:
-                // Nothing for now
-                break;
-            default:
-                Assert.IsTrue(false, "ShotMovementType not implemented");
-                break;
-        }
+        ShotController.InstantiateShot(this, this.weaponData.ShotControllerPrefab, this.weaponEndPoint.transform, power);
     }
 }

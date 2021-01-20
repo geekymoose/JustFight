@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc304001aabf51cec8cc21781ee51902, type: 3}
   m_Name: Destructible_Player
   m_EditorClassIdentifier: 
-  affectedByWeapons:
-  - {fileID: 11400000, guid: 335889cdd233eb44bbdc1b6cda8e2f37, type: 2}
-  - {fileID: 11400000, guid: 202d8cb109be9f9458b2ebcbf735116c, type: 2}
+  affectedByShots:
+  - {fileID: 11400000, guid: c3f9fb94637d1f84791aa581f5e2f88b, type: 2}
+  - {fileID: 11400000, guid: 6fecdfdc1820c4541a060a71e95e6987, type: 2}

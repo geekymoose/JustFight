@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3760807573939711239}
   - component: {fileID: 3163469245728659290}
   - component: {fileID: -8292663405452593556}
+  - component: {fileID: 6710138085761790232}
   m_Layer: 0
   m_Name: Prefab_ShotLaser
   m_TagString: Untagged
@@ -79,3 +80,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6710138085761790232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4461884403967580548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0898d5c5158a24c448a2e8635494a72d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShotData: {fileID: 11400000, guid: a913744d83fa7784f86f2fdea6aa4135, type: 2}

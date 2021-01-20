@@ -19,8 +19,7 @@ public class WeaponFiringTypeHoldFire : WeaponFiringType
 
     public void HoldFire()
     {
-        float currentPower = this.CurrentChargedPowerInPercent();
-        this.weapon.InstantiateShot(100);
+        this.weapon.InstantiateNewShot(100);
     }
 
     public void ReleaseFire()

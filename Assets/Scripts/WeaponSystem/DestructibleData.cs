@@ -4,12 +4,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Destructible", menuName = "ScriptableObjects/WeaponSystem/Destructible", order = 1)]
 public class DestructibleData : ScriptableObject
 {
-    [SerializeField]
-    [Tooltip("List of weapons that can destruct this element")]
-    private List<WeaponData> affectedByWeapons;
+    [Tooltip("List of shots that can destruct this element")]
+    public List<ShotData> affectedByShots;
 
-    public bool IsAffectedByWeapon(WeaponData weapon)
+    public bool IsAffectedByShot(ShotData shotData)
     {
-        return this.affectedByWeapons.Contains(weapon);
+        return this.affectedByShots.Contains(shotData);
     }
 }

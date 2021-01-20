@@ -50,7 +50,7 @@ public class WeaponFiringTypeChargeFire : WeaponFiringType
             float currentPower = this.CurrentChargedPowerInPercent();
             if(this.weapon.GetWeaponData().IsEnoughPowerToFire(currentPower))
             {
-                this.weapon.InstantiateShot(currentPower);
+                this.weapon.InstantiateNewShot(currentPower);
             }
             this.Reload();
         }
