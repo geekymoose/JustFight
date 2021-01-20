@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -6,6 +7,10 @@ public class ShotController : MonoBehaviour
     [SerializeField]
     [Tooltip("The data used for this shot")]
     private ShotData ShotData;
+
+    [SerializeField]
+    [Tooltip("List of effects to apply on impact")]
+    private List<GameObject> effectsOnImpact;
 
     public Weapon WeaponOwner { get; set;} // The one who did the shot
 
@@ -62,6 +67,10 @@ public class ShotController : MonoBehaviour
                     destructible.TakeDamage(this.ShotData.ShotDamageAmount);
                     this.ApplyOnImpact();
                 }
+                else
+                {
+                    this.ApplyOnImpact();
+                }
             }
         }
         else
@@ -72,8 +81,10 @@ public class ShotController : MonoBehaviour
 
     private void ApplyOnImpact()
     {
-        // TODO Apply the "OnImpact" events
-        // TODO Change destroy with anim
+        foreach (GameObject effect in this.effectsOnImpact)
+        {
+            Instantiate(effect, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        }
         GameObject.Destroy(this.gameObject);
     }
 

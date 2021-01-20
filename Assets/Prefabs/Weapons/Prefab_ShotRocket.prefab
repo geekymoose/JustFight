@@ -85,6 +85,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShotData: {fileID: 11400000, guid: 6fecdfdc1820c4541a060a71e95e6987, type: 2}
+  effectsOnImpact:
+  - {fileID: 2814453450574379209, guid: e91bdbc569139e44996b20d722d61633, type: 3}
 --- !u!114 &5713120843592220881
 MonoBehaviour:
   m_ObjectHideFlags: 0
