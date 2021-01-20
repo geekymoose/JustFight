@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42478f8be35358dd875d9077c4db8ad, type: 3}
-  m_Name: MovementFollowTarget_Normal
+  m_Script: {fileID: 11500000, guid: b705841720c578eb590f295ca3f7383f, type: 3}
+  m_Name: ShotMovementForward_Normal
   m_EditorClassIdentifier: 
-  speedInUnitsPerSec: 10
-  target: {fileID: 0}
+  speedInUnityForce: 50

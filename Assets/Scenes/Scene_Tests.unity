@@ -133,12 +133,17 @@ PrefabInstance:
     - target: {fileID: 5196704286388139450, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5696776292164444488, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
       propertyPath: m_Name
       value: Prefab_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696776292164444488, guid: 78a9214d6f9e3214ca9773d5b6e27507,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6243309874215320709, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
@@ -208,6 +213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prefab_Bush
+      objectReference: {fileID: 0}
+    - target: {fileID: 234831080735688347, guid: abf1b805ccc53ab448841b55b7dc9587,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1604230675391633593, guid: abf1b805ccc53ab448841b55b7dc9587,
         type: 3}
@@ -4959,6 +4969,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prefab_Crate (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6514404546101586351, guid: c26bb2d98fb85a844866290376c26b55,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c26bb2d98fb85a844866290376c26b55, type: 3}
 --- !u!1001 &482079284
@@ -5028,6 +5043,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prefab_Crate
       objectReference: {fileID: 0}
+    - target: {fileID: 6514404546101586351, guid: c26bb2d98fb85a844866290376c26b55,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c26bb2d98fb85a844866290376c26b55, type: 3}
 --- !u!1001 &739267736
@@ -5041,6 +5061,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prefab_Bush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 234831080735688347, guid: abf1b805ccc53ab448841b55b7dc9587,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1604230675391633593, guid: abf1b805ccc53ab448841b55b7dc9587,
         type: 3}
@@ -6400,6 +6425,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prefab_Crate (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6514404546101586351, guid: c26bb2d98fb85a844866290376c26b55,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c26bb2d98fb85a844866290376c26b55, type: 3}
 --- !u!1 &1190610725
@@ -6522,12 +6552,17 @@ PrefabInstance:
     - target: {fileID: 5196704286388139450, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5696776292164444488, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
       propertyPath: m_Name
       value: Prefab_Player_ENEMY
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696776292164444488, guid: 78a9214d6f9e3214ca9773d5b6e27507,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6243309874215320709, guid: 78a9214d6f9e3214ca9773d5b6e27507,
         type: 3}
@@ -6652,6 +6687,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prefab_Crate (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6514404546101586351, guid: c26bb2d98fb85a844866290376c26b55,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c26bb2d98fb85a844866290376c26b55, type: 3}
