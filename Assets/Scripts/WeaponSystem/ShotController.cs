@@ -36,12 +36,14 @@ public class ShotController : MonoBehaviour
                 applyCollision = true;
             }
 
-            if(applyCollision)
+            if(!(applyCollision && destructible))
             {
-                this.ApplyOnImpact();
+                // Hack: bypass the collision process
+                return;
             }
         }
-        else if(destructible)
+
+        if(destructible)
         {
             DestructibleData destructibleData = destructible.GetDestructibleData();
             Assert.IsNotNull(destructibleData, "Missing asset"); // Internal error (DestructibleData required)

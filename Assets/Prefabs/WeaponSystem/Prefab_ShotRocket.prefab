@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1661180322923571723}
   - component: {fileID: -7632590603523216171}
   - component: {fileID: 9091763820231570486}
+  - component: {fileID: 5713120843592220881}
   m_Layer: 0
   m_Name: Prefab_ShotRocket
   m_TagString: Untagged
@@ -84,6 +85,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShotData: {fileID: 11400000, guid: 6fecdfdc1820c4541a060a71e95e6987, type: 2}
+--- !u!114 &5713120843592220881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6145737065582151281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef9d613cb2a24c6bb1c2dc1be3b0e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructibleData: {fileID: 11400000, guid: 58fca6f602b3356449c6ef604220cfe8, type: 2}
+  takeDamageEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6145737065582151281}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8837775780085171271
 GameObject:
   m_ObjectHideFlags: 0

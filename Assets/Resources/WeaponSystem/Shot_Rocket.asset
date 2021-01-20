@@ -16,5 +16,5 @@ MonoBehaviour:
   ShotMovementSpeed: 5
   ShotDamageAmount: 200
   collidesWithEnemyShots: 1
-  collidesWithFriendlyShots: 0
+  collidesWithFriendlyShots: 1
   collidesWithFriends: 0
