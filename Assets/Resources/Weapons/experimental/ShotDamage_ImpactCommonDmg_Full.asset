@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42478f8be35358dd875d9077c4db8ad, type: 3}
-  m_Name: ShotMovementFollowTarget_Normal
+  m_Script: {fileID: 11500000, guid: bceeca1a77aa5494f864e11318667ea5, type: 3}
+  m_Name: ShotDamage_ImpactCommonDmg_Full
   m_EditorClassIdentifier: 
-  speedInUnitsPerSec: 10
+  DamageType: {fileID: 11400000, guid: 8aa832828d575d14a8aae1dd8a05ad46, type: 2}
+  UsesPowerModificator: 0
+  amountOfDamage: 50

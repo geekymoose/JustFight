@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 namespace WeaponSystem
 {
     // TODO Remove experimental when ready
-    [CreateAssetMenu(fileName = "ShotMovementForward", menuName = "ScriptableObjects/WeaponSystem/experimental/ShotMovementForward", order = 1)]
+    [CreateAssetMenu(fileName = "ShotMovement_Forward", menuName = "ScriptableObjects/WeaponSystem/experimental/ShotMovement_Forward", order = 1)]
     public class ShotMovementForward : ShotMovement
     {
         [Tooltip("The forward speed (in unity force to apply)")]

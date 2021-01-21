@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WeaponSystem
 {
-    [CreateAssetMenu(fileName = "ShotDamageExplosion", menuName = "ScriptableObjects/WeaponSystem/experimental/ShotDamageExplosion", order = 1)]
+    [CreateAssetMenu(fileName = "ShotDamage_Explosion", menuName = "ScriptableObjects/WeaponSystem/experimental/ShotDamage_Explosion", order = 1)]
     public class ShotDamageExplosion : ShotDamage
     {
         [Tooltip("Prefab to instanciate when the explosion happens (e.g., for rendering)")]

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 481e972fb7193464e9cf7f0a9b3dcd41, type: 3}
-  m_Name: ShotDamageExplosion_Normal
+  m_Name: ShotDamage_ExplosionNormal
   m_EditorClassIdentifier: 
   DamageType: {fileID: 11400000, guid: 36b891b19d656334abefb8f84c29a617, type: 2}
   ExplosionPrefab: {fileID: 2814453450574379209, guid: e91bdbc569139e44996b20d722d61633,

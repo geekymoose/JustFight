@@ -7,6 +7,9 @@ namespace WeaponSystem
         [Tooltip("Type of damage used by this shot damage")]
         public DamageType DamageType;
 
+        [Tooltip("If false, the 100% power value is always used")]
+        public bool UsesPowerModificator;
+
         public abstract void Apply(ShotController controller, GameObject target);
     }
 }

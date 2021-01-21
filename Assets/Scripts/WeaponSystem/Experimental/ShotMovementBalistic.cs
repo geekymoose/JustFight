@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 namespace WeaponSystem
 {
     // TODO Remove experimental when ready
-    [CreateAssetMenu(fileName = "ShotMovementBalistic", menuName = "ScriptableObjects/WeaponSystem/experimental/ShotMovementBalistic", order = 1)]
+    [CreateAssetMenu(fileName = "ShotMovement_Balistic", menuName = "ScriptableObjects/WeaponSystem/experimental/ShotMovement_Balistic", order = 1)]
     public class ShotMovementBalistic : ShotMovement
     {
         [Tooltip("Each second, the speed is affected by this modificator (in Unity force)")]

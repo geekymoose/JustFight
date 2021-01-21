@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WeaponSystem
 {
-    [CreateAssetMenu(fileName = "ShotDamageShock", menuName = "ScriptableObjects/WeaponSystem/experimental/ShotDamageShock", order = 1)]
+    [CreateAssetMenu(fileName = "ShotDamage_Shock", menuName = "ScriptableObjects/WeaponSystem/experimental/ShotDamage_Shock", order = 1)]
     public class ShotDamageShock : ShotDamage
     {
         [Tooltip("Unity force to push the target")]

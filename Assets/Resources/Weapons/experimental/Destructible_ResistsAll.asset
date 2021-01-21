@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b705841720c578eb590f295ca3f7383f, type: 3}
-  m_Name: ShotMovementForward_Normal
+  m_Script: {fileID: 11500000, guid: 0c0177d26cdb4bf44a5e4b27d27c6827, type: 3}
+  m_Name: Destructible_ResistsAll
   m_EditorClassIdentifier: 
-  speedInUnityForce: 50
+  affectedByDamageType: []
