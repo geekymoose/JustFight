@@ -14,9 +14,19 @@ namespace WeaponSystem
 
         public override void Apply(ShotController controller, GameObject target)
         {
-            // TODO add damages to the explosion (atm, does nothing more than prefab instantiation)
             float damages = this.UsesPowerModificator ? controller.CalculatedValueAfterPowerModification(this.ExplosionDamageAmount) : this.ExplosionDamageAmount;
             Instantiate(this.ExplosionPrefab, controller.gameObject.transform.position, controller.gameObject.transform.rotation);
+
+            // TODO Add damages to the explosion (atm, does nothing more than prefab instantiation and impact damage)
+            DestructibleController destructible = target.GetComponent<DestructibleController>();
+            if(destructible)
+            {
+                if(destructible.GetDestructibleData().IsAffectedByDamageType(controller.GetDamageType()))
+                {
+                    destructible.TakeDamage(damages);
+                }
+            }
+
             GameObject.Destroy(controller.gameObject);
         }
     }
