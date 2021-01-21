@@ -668,7 +668,7 @@ MonoBehaviour:
     m_ActionId: bc3102ab-224b-4e3a-9577-22553ae4a616
     m_ActionName: Player/Fire3[/DualShock4GamepadHID/buttonWest]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -750,7 +750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2077594692bff7440addf14c754f92a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerKilledEvent: {fileID: 11400000, guid: c53b716d208a7f0478473f500218b905, type: 2}
   maxMovementSpeedInUnitPerSec: 5
 --- !u!114 &320284727
 MonoBehaviour:
@@ -764,8 +763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8d261c0fbe6da49a02780d145f5938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerKilledEvent: {fileID: 11400000, guid: c53b716d208a7f0478473f500218b905, type: 2}
-  chargingTimeInPowerPerSec: 40
   weaponDirectionIndicator: {fileID: 4631266565386123599}
   weapon1: {fileID: -6973053812911846139}
   weapon2: {fileID: 7120615256621895054}
@@ -802,12 +799,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 335889cdd233eb44bbdc1b6cda8e2f37, type: 2}
   weaponEndPoint: {fileID: 2104024751}
-  weaponReloadingEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  notEnoughPowerEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &7120615256621895054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,12 +813,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 202d8cb109be9f9458b2ebcbf735116c, type: 2}
   weaponEndPoint: {fileID: 2104024751}
-  weaponReloadingEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  notEnoughPowerEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &7831157317432520534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -842,12 +827,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: e0bc1d5520cb10c4b93908b3e1c64154, type: 2}
   weaponEndPoint: {fileID: 2104024751}
-  weaponReloadingEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  notEnoughPowerEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &5151101146141293893
 MonoBehaviour:
   m_ObjectHideFlags: 0

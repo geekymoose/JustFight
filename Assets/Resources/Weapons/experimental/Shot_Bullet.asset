@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2b6498f71072bba787ca98528408dbb, type: 3}
-  m_Name: Shot_Gun
+  m_Name: Shot_Bullet
   m_EditorClassIdentifier: 
   MovementType: {fileID: 11400000, guid: 81aed7188d660713daa938b76e1eb0c9, type: 2}
   Damage: {fileID: 11400000, guid: 6de0471c1c9963d4da7d717f5cf8456c, type: 2}
   DamagedByEnemyShots: 1
-  DamagedByFriendlyShots: 1
+  DamagedByFriendlyShots: 0
   DamagedByTheShooter: 0
   PowerEffects: []

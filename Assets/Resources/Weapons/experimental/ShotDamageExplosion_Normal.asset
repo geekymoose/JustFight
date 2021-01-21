@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ShotDamageExplosion_Normal
   m_EditorClassIdentifier: 
   DamageType: {fileID: 11400000, guid: 36b891b19d656334abefb8f84c29a617, type: 2}
-  explosionPrefab: {fileID: 2814453450574379209, guid: e91bdbc569139e44996b20d722d61633,
+  ExplosionPrefab: {fileID: 2814453450574379209, guid: e91bdbc569139e44996b20d722d61633,
     type: 3}
-  explosionDamageAmount: 100
+  ExplosionDamageAmount: 100
