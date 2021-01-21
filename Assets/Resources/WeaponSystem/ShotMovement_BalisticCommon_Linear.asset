@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ShotMovement_BalisticCommon_Linear
   m_EditorClassIdentifier: 
   UsesPowerModificator: 1
-  speedModificator: 1
-  originSpeedInUnityUnits: 10
+  SpeedModificator: 1
+  InitSpeedInUnityUnits: 20

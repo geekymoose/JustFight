@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ShotMovement_FollowTargetCommon_Full
   m_EditorClassIdentifier: 
   UsesPowerModificator: 0
-  SpeedInUnitsPerSec: 5
+  SpeedInUnitsPerSec: 8

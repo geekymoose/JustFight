@@ -36,20 +36,19 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        /*
-        // TODO Re-integrate the indicator
-        if(this.currentWeapon.IsChargingPower())
+        float power = this.currentWeapon.GetCurrentPower();
+        Debug.Log(power);
+        if(power > 0)
         {
             this.weaponDirectionIndicator.SetActive(true);
 
-            float newScale = (this.currentWeapon.CurrentChargedPowerInPercent() / 100) * 3; // 3 because our scale goes from 0 to 3 (hacky)
+            float newScale = (power / 100) * 3; // 3 because our scale goes from 0 to 3 (hacky)
             this.weaponDirectionIndicator.transform.localScale = new Vector3(this.weaponDirectionIndicator.transform.localScale.x, newScale, 1);
         }
         else
         {
             this.weaponDirectionIndicator.SetActive(false);
         }
-        */
     }
 
     private void PressFire()

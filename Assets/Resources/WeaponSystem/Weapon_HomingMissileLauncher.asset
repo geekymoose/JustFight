@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShotControllerPrefab: {fileID: 1595082404005707234, guid: 43188b96977bb5dff8736a5fb0cedf6f,
     type: 3}
-  PressFireType: 0
+  PressFireType: 1
   HoldFireType: 2
-  ReleaseFireType: 2
+  ReleaseFireType: 0
   TimeBetweenTwoShotsInSec: 2
   FullPowerChargingSpeedInSec: 3
