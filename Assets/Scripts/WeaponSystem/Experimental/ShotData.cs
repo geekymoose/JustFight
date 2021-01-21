@@ -16,5 +16,8 @@ namespace WeaponSystem
 
         [Tooltip("Modificators to apply on the shot according to the power")]
         public List<ShotPowerEffect> PowerEffects;
+
+        [Tooltip("Type of damage this shot does on collision")]
+        public DamageType DamageType;
     }
 }

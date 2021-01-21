@@ -15,3 +15,4 @@ MonoBehaviour:
   MovementType: {fileID: 11400000, guid: 81aed7188d660713daa938b76e1eb0c9, type: 2}
   ShotDamageAmount: 60
   PowerEffects: []
+  DamageType: {fileID: 11400000, guid: 8aa832828d575d14a8aae1dd8a05ad46, type: 2}

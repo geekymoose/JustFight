@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c0177d26cdb4bf44a5e4b27d27c6827, type: 3}
-  m_Name: Destructible_Crate
+  m_Script: {fileID: 11500000, guid: 1c9674eb6b14683449fbf80ca233d2d5, type: 3}
+  m_Name: DamageType_Shocking
   m_EditorClassIdentifier: 
-  affectedByDamageType:
-  - {fileID: 11400000, guid: 8aa832828d575d14a8aae1dd8a05ad46, type: 2}
-  - {fileID: 11400000, guid: 939f73a988a31e64f953f5e334b6f771, type: 2}

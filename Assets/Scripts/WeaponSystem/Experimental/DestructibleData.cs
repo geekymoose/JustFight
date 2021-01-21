@@ -7,12 +7,12 @@ namespace WeaponSystem
     [CreateAssetMenu(fileName = "Destructible", menuName = "ScriptableObjects/WeaponSystem/experimental/Destructible", order = 1)]
     public class DestructibleData : ScriptableObject
     {
-        [Tooltip("List of shots that can destruct this element")]
-        public List<ShotData> affectedByShots;
+        [Tooltip("List the type of damage that can affect this destructible")]
+        public List<DamageType> affectedByDamageType;
 
         public bool IsAffectedByShot(ShotData shotData)
         {
-            return this.affectedByShots.Contains(shotData);
+            return this.affectedByDamageType.Contains(shotData.DamageType);
         }
     }
 }
