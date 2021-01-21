@@ -17,5 +17,5 @@ MonoBehaviour:
   PressFireType: 0
   HoldFireType: 2
   ReleaseFireType: 2
-  FireRateInShotsPerSec: 1
+  TimeBetweenTwoShotsInSec: 2
   FullPowerChargingSpeedInSec: 3

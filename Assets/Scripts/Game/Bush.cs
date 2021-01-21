@@ -15,6 +15,7 @@ public class Bush : MonoBehaviour
 
     public void Destroy()
     {
+        Debug.Log("Destroy bush " + this.gameObject);
         this.animator.SetTrigger("Destroy");
         GameObject.Destroy(this.gameObject, 1); // Let the anim plays
     }

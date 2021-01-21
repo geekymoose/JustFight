@@ -62,7 +62,7 @@ namespace WeaponSystem
 
         public bool CanFire()
         {
-            return Time.time > this.lastFireTime + this.weaponData.GetTimeBetweenTwoShots();
+            return Time.time > this.lastFireTime + this.weaponData.TimeBetweenTwoShotsInSec;
         }
 
         public float GetCurrentPower()

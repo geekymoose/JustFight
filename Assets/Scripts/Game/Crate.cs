@@ -15,6 +15,7 @@ public class Crate : MonoBehaviour
 
     public void Destroy()
     {
+        Debug.Log("Destroy crate " + this.gameObject);
         this.animator.SetTrigger("Destroy");
         GameObject.Destroy(this.gameObject, 1); // Let the anim plays
     }

@@ -24,16 +24,11 @@ namespace WeaponSystem
         [Tooltip("Firing action to do when the fire key is released")]
         public WeaponFireType ReleaseFireType;
 
-        [Tooltip("Number of shots per seconds the weapon can fire")]
-        public int FireRateInShotsPerSec = 1;
+        [Tooltip("Time it takes for the weapon to be able to shot again after a fire")]
+        public float TimeBetweenTwoShotsInSec = 1;
 
         [Tooltip("Time it takes for the weapon to have 100% of its power (in seconds)")]
         [Range(0, 5)]
         public float FullPowerChargingSpeedInSec = 1f;
-
-        public float GetTimeBetweenTwoShots()
-        {
-            return 1 / this.FireRateInShotsPerSec;
-        }
     }
 }
