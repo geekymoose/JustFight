@@ -20,6 +20,7 @@ namespace WeaponSystem
         private void Awake()
         {
             this.rg = this.GetComponent<Rigidbody2D>();
+            this.EffectivePowerInPercent = 100; // By default, 100% if not set
 
             Assert.IsNotNull(this.rg, "Missing asset");
             Assert.IsNotNull(this.shotData, "Missing asset");
@@ -63,7 +64,7 @@ namespace WeaponSystem
         {
             GameObject newObject = Instantiate(shotPrefab.gameObject, origin);
             ShotController newShotController = newObject.GetComponent<ShotController>();
-            Assert.IsNotNull(newShotController, "Missing component");
+            Assert.IsNotNull(newShotController, "Missing asset");
 
             newShotController.WeaponOrigin = weaponOrigin;
             newShotController.EffectivePowerInPercent = power;
@@ -79,6 +80,7 @@ namespace WeaponSystem
             WeaponController[] weaponControllers = collision.gameObject.GetComponentsInChildren<WeaponController>();
             foreach(WeaponController weapon in weaponControllers)
             {
+                Assert.IsNotNull(this.WeaponOrigin, "Invalid asset");
                 if(weapon.gameObject == this.WeaponOrigin.gameObject)
                 {
                     if(this.shotData.DamagedByTheShooter)

@@ -12,7 +12,8 @@ namespace WeaponSystem
         public override void Init(ShotController controller, Rigidbody2D rg)
         {
             float speed = this.UsesPowerModificator ? controller.CalculatedValueAfterPowerModification(this.SpeedInUnitsPerSec) : this.SpeedInUnitsPerSec;
-            rg.velocity = Vector2.up * speed;
+            Vector2 forward = new Vector2(controller.gameObject.transform.up.x, controller.gameObject.transform.up.y);
+            rg.velocity = forward * speed;
         }
 
         public override void Apply(ShotController controller, Rigidbody2D rg)
