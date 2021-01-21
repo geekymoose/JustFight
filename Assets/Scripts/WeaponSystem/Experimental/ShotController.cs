@@ -14,14 +14,11 @@ namespace WeaponSystem
         private GameObject currentTarget;
         private float spawningTime = 0f; // Time when the shot was created
 
-        public float DamageEfficiencyInPercent {get; set; }
-        public float MovementEfficiencyInPercent {get; set; }
+        public WeaponController WeaponOrigin { get; set;} // Weapon which did the shot
+        public float EffectivePowerInPercent {get; set; }
 
         private void Awake()
         {
-            this.DamageEfficiencyInPercent = 100;
-            this.MovementEfficiencyInPercent = 100;
-
             this.rg = this.GetComponent<Rigidbody2D>();
 
             Assert.IsNotNull(this.rg, "Missing asset");
@@ -60,11 +57,14 @@ namespace WeaponSystem
             return this.shotData.PowerEffects;
         }
 
-        public static void InstantiateShot(WeaponController owner, ShotController shotPrefab, Transform origin, float power)
+        public static void InstantiateShot(WeaponController weaponOrigin, ShotController shotPrefab, Transform origin, float power)
         {
             GameObject newObject = Instantiate(shotPrefab.gameObject, origin);
             ShotController newShotController = newObject.GetComponent<ShotController>();
             Assert.IsNotNull(newShotController, "Missing component");
+
+            newShotController.WeaponOrigin = weaponOrigin;
+            newShotController.EffectivePowerInPercent = power;
 
             foreach(ShotPowerEffect effect in newShotController.GetPowerEffects())
             {
@@ -73,5 +73,36 @@ namespace WeaponSystem
             }
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            // Special case of collision with another shot
+            ShotController shotController = collision.gameObject.GetComponent<ShotController>();
+            if(shotController)
+            {
+                bool isFriendlyShot = shotController.WeaponOrigin == this.WeaponOrigin;
+                bool isEnemyShot = !isFriendlyShot;
+
+                if(isFriendlyShot && this.shotData.DamagedByFriendlyShots)
+                {
+                    this.shotData.Damage.Apply(this, collision.gameObject);
+                }
+                else if(isEnemyShot && this.shotData.DamagedByEnemyShots)
+                {
+                    this.shotData.Damage.Apply(this, collision.gameObject);
+                }
+            }
+            // Special case of collision with the origin shooter
+            else if(collision.gameObject == this.WeaponOrigin.gameObject)
+            {
+                if(this.shotData.DamagedByTheShooter)
+                {
+                    this.shotData.Damage.Apply(this, collision.gameObject);
+                }
+            }
+            else
+            {
+                this.shotData.Damage.Apply(this, collision.gameObject);
+            }
+        }
     }
 }

@@ -13,6 +13,15 @@ namespace WeaponSystem
         [Tooltip("The damage behavior to apply on collision")]
         public ShotDamage Damage;
 
+        [Tooltip("If false, this shot does not impact with enemy shots")]
+        public bool DamagedByEnemyShots = false;
+
+        [Tooltip("If false, this shot does not impact with friendly shots")]
+        public bool DamagedByFriendlyShots = false;
+
+        [Tooltip("If false, this shot does not impact with the shooter")]
+        public bool DamagedByTheShooter = false;
+
         [Tooltip("Modificators to apply on the shot according to the power")]
         public List<ShotPowerEffect> PowerEffects;
     }

@@ -15,6 +15,7 @@ namespace WeaponSystem
                 if(destructible.GetDestructibleData().IsAffectedByDamageType(controller.GetDamageType()))
                 {
                     destructible.TakeDamage(this.amountOfDamage);
+                    GameObject.Destroy(controller.gameObject);
                 }
             }
         }

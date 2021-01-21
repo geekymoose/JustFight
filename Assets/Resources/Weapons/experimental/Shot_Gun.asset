@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Shot_Gun
   m_EditorClassIdentifier: 
   MovementType: {fileID: 11400000, guid: 81aed7188d660713daa938b76e1eb0c9, type: 2}
-  PowerEffects: []
   Damage: {fileID: 11400000, guid: 6de0471c1c9963d4da7d717f5cf8456c, type: 2}
+  DamagedByEnemyShots: 1
+  DamagedByFriendlyShots: 1
+  DamagedByTheShooter: 1
+  PowerEffects: []

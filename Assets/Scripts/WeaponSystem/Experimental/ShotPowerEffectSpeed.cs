@@ -6,7 +6,7 @@ namespace WeaponSystem
     {
         public override void Apply(float power, ShotController controller)
         {
-            controller.MovementEfficiencyInPercent = power;
+            // TODO WIP
         }
     }
 }
