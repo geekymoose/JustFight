@@ -29,7 +29,7 @@ namespace WeaponSystem
         private void Start()
         {
             this.spawningTime = Time.time;
-            this.rg.velocity = Vector3.up * 10; // TODO TMP VALUE
+            this.shotData.MovementType.Init(this, this.rg);
         }
 
         private void FixedUpdate()
@@ -92,7 +92,7 @@ namespace WeaponSystem
                 }
             }
             // Special case of collision with the origin shooter
-            else if(collision.gameObject == this.WeaponOrigin.gameObject)
+            else if(this.WeaponOrigin && collision.gameObject == this.WeaponOrigin.gameObject)
             {
                 if(this.shotData.DamagedByTheShooter)
                 {

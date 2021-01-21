@@ -11,6 +11,12 @@ namespace WeaponSystem
         [SerializeField]
         private float speedInUnityForce;
 
+        public override void Init(ShotController controller, Rigidbody2D rg)
+        {
+            // Initial speed
+            rg.AddForce(Vector2.up * this.speedInUnityForce);
+        }
+
         public override void Apply(ShotController controller, Rigidbody2D rg)
         {
             Assert.IsNotNull(controller, "Invalid parameter");

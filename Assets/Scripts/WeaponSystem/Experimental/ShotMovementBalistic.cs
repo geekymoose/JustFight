@@ -7,9 +7,16 @@ namespace WeaponSystem
     [CreateAssetMenu(fileName = "ShotMovementBalistic", menuName = "ScriptableObjects/WeaponSystem/experimental/ShotMovementBalistic", order = 1)]
     public class ShotMovementBalistic : ShotMovement
     {
-        [SerializeField]
         [Tooltip("Each second, the speed is affected by this modificator (in Unity force)")]
-        private float speedModificator = 1;
+        public float speedModificator = 1;
+
+        [Tooltip("Speed when movement starts")]
+        public float originSpeedInUnityUnits = 10;
+
+        public override void Init(ShotController controller, Rigidbody2D rg)
+        {
+            rg.velocity = Vector2.up * this.originSpeedInUnityUnits;
+        }
 
         public override void Apply(ShotController controller, Rigidbody2D rg)
         {

@@ -16,5 +16,5 @@ MonoBehaviour:
   Damage: {fileID: 11400000, guid: 6de0471c1c9963d4da7d717f5cf8456c, type: 2}
   DamagedByEnemyShots: 1
   DamagedByFriendlyShots: 1
-  DamagedByTheShooter: 1
+  DamagedByTheShooter: 0
   PowerEffects: []

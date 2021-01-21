@@ -11,6 +11,12 @@ namespace WeaponSystem
         [Tooltip("The movement speed (in Unity units per seconds)")]
         private float speedInUnitsPerSec;
 
+        public override void Init(ShotController controller, Rigidbody2D rg)
+        {
+            // Initial speed
+            rg.velocity = Vector2.up * this.speedInUnitsPerSec;
+        }
+
         public override void Apply(ShotController controller, Rigidbody2D rg)
         {
             Assert.IsNotNull(controller, "Invalid parameter");
