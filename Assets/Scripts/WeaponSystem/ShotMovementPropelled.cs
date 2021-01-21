@@ -3,8 +3,8 @@ using UnityEngine.Assertions;
 
 namespace WeaponSystem
 {
-    [CreateAssetMenu(fileName = "ShotMovement_Forward", menuName = "ScriptableObjects/WeaponSystem/ShotMovement_Forward", order = 1)]
-    public class ShotMovementForward : ShotMovement
+    [CreateAssetMenu(fileName = "ShotMovement_Propelled", menuName = "ScriptableObjects/WeaponSystem/ShotMovement_Propelled", order = 1)]
+    public class ShotMovementPropelled : ShotMovement
     {
         [Tooltip("The forward speed (in unity force to apply)")]
         public float SpeedInUnityForce = 5;
