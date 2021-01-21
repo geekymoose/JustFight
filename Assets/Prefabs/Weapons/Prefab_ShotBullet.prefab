@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8daf7c831fe6ff4e9b643e26b3486ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructibleData: {fileID: 11400000, guid: d8ce940627b56842996f7b0098f37d45, type: 2}
+  destructibleData: {fileID: 11400000, guid: f5035dd9e1b6ee833849c3deaf0b055e, type: 2}
   takeDamageEvent:
     m_PersistentCalls:
       m_Calls: []
