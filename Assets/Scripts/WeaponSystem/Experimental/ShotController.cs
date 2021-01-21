@@ -52,11 +52,6 @@ namespace WeaponSystem
             return this.shotData.Damage.DamageType;
         }
 
-        public List<ShotPowerEffect> GetPowerEffects()
-        {
-            return this.shotData.PowerEffects;
-        }
-
         public static void InstantiateShot(WeaponController weaponOrigin, ShotController shotPrefab, Transform origin, float power)
         {
             GameObject newObject = Instantiate(shotPrefab.gameObject, origin);
@@ -65,12 +60,6 @@ namespace WeaponSystem
 
             newShotController.WeaponOrigin = weaponOrigin;
             newShotController.EffectivePowerInPercent = power;
-
-            foreach(ShotPowerEffect effect in newShotController.GetPowerEffects())
-            {
-                // TODO This is WIP
-                effect.Apply(power, newShotController);
-            }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

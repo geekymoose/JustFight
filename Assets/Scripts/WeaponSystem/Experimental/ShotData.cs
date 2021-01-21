@@ -21,8 +21,5 @@ namespace WeaponSystem
 
         [Tooltip("If false, this shot does not impact with the shooter")]
         public bool DamagedByTheShooter = false;
-
-        [Tooltip("Modificators to apply on the shot according to the power")]
-        public List<ShotPowerEffect> PowerEffects;
     }
 }
