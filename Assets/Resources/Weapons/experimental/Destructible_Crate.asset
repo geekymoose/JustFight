@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2b6498f71072bba787ca98528408dbb, type: 3}
-  m_Name: Shot_Gun
+  m_Script: {fileID: 11500000, guid: 0c0177d26cdb4bf44a5e4b27d27c6827, type: 3}
+  m_Name: Destructible_Crate
   m_EditorClassIdentifier: 
-  MovementType: {fileID: 11400000, guid: 81aed7188d660713daa938b76e1eb0c9, type: 2}
-  ShotDamageAmount: 60
-  PowerEffects: []
+  affectedByShots:
+  - {fileID: 11400000, guid: caeb45b5c782a08bca8ba1a48568393a, type: 2}

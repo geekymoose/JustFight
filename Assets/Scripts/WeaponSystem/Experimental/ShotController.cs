@@ -8,9 +8,6 @@ namespace WeaponSystem
     public class ShotController : MonoBehaviour
     {
         [SerializeField]
-        private ShotMovement movementType;
-
-        [SerializeField]
         private ShotData shotData;
 
         private Rigidbody2D rg;
@@ -26,8 +23,10 @@ namespace WeaponSystem
             this.MovementEfficiencyInPercent = 100;
 
             this.rg = this.GetComponent<Rigidbody2D>();
+
             Assert.IsNotNull(this.rg, "Missing asset");
-            Assert.IsNotNull(this.movementType, "Missing asset");
+            Assert.IsNotNull(this.shotData, "Missing asset");
+            Assert.IsNotNull(this.shotData.MovementType, "Missing asset");
         }
 
         private void Start()
@@ -38,12 +37,12 @@ namespace WeaponSystem
 
         private void FixedUpdate()
         {
-            this.movementType.Apply(this, this.rg);
+            this.shotData.MovementType.Apply(this, this.rg);
         }
 
         public Transform GetTarget()
         {
-            return this.currentTarget.transform;
+            return (this.currentTarget) ? this.currentTarget.transform : null;
         }
 
         public float GetLifetimeDuration()
@@ -53,7 +52,7 @@ namespace WeaponSystem
 
         public List<ShotPowerEffect> GetPowerEffects()
         {
-            return this.shotData.powerEffects;
+            return this.shotData.PowerEffects;
         }
 
         public static void InstantiateShot(WeaponController owner, ShotController shotPrefab, Transform origin, float power)
@@ -64,9 +63,9 @@ namespace WeaponSystem
 
             foreach(ShotPowerEffect effect in newShotController.GetPowerEffects())
             {
+                // TODO This is WIP
                 effect.Apply(power, newShotController);
             }
-            Debug.Log("Efficiency: " + newShotController.DamageEfficiencyInPercent + " /// " + newShotController.MovementEfficiencyInPercent);
         }
 
     }
