@@ -8,13 +8,12 @@ namespace WeaponSystem
     public class ShotMovementForward : ShotMovement
     {
         [Tooltip("The forward speed (in unity force to apply)")]
-        [SerializeField]
-        private float speedInUnityForce;
+        public float SpeedInUnityForce = 5;
 
         public override void Init(ShotController controller, Rigidbody2D rg)
         {
-            // Initial speed
-            rg.AddForce(Vector2.up * this.speedInUnityForce);
+            float speed = this.UsesPowerModificator ? controller.CalculatedValueAfterPowerModification(this.SpeedInUnityForce) : this.SpeedInUnityForce;
+            rg.AddForce(Vector2.up * speed);
         }
 
         public override void Apply(ShotController controller, Rigidbody2D rg)
@@ -23,10 +22,10 @@ namespace WeaponSystem
             Assert.IsNotNull(rg, "Invalid parameter");
             if(controller && rg)
             {
-                // TODO Movement to fix, currently, it increase constantly
+                // TODO Movement to fix, currently, it increase constantly (+ apply modificator)
                 Transform transform = rg.gameObject.transform;
                 Vector2 forwardForce = new Vector2(transform.up.x, transform.up.y);
-                forwardForce *= this.speedInUnityForce * Time.deltaTime;
+                forwardForce *= this.SpeedInUnityForce * Time.deltaTime;
                 rg.AddForce(forwardForce);
                 Debug.DrawRay(transform.position, rg.velocity, Color.blue, 0.1f);
             }

@@ -8,14 +8,15 @@ namespace WeaponSystem
     public class ShotMovementBalistic : ShotMovement
     {
         [Tooltip("Each second, the speed is affected by this modificator (in Unity force)")]
-        public float speedModificator = 1;
+        public float SpeedModificator = 1;
 
         [Tooltip("Speed when movement starts")]
-        public float originSpeedInUnityUnits = 10;
+        public float InitSpeedInUnityUnits = 10;
 
         public override void Init(ShotController controller, Rigidbody2D rg)
         {
-            rg.velocity = Vector2.up * this.originSpeedInUnityUnits;
+            float speed = this.UsesPowerModificator ? controller.CalculatedValueAfterPowerModification(this.InitSpeedInUnityUnits) : this.InitSpeedInUnityUnits;
+            rg.velocity = Vector2.up * speed;
         }
 
         public override void Apply(ShotController controller, Rigidbody2D rg)
@@ -26,8 +27,8 @@ namespace WeaponSystem
             {
                 // This is a hacky why to recreate a pseudo gravity
                 float elapsedtime = Mathf.Exp(controller.GetLifetimeDuration());
-                float modifX = - (rg.velocity.x * this.speedModificator * Time.deltaTime * elapsedtime);
-                float modifY = - (rg.velocity.y * this.speedModificator * Time.deltaTime * elapsedtime);
+                float modifX = - (rg.velocity.x * this.SpeedModificator * Time.deltaTime * elapsedtime);
+                float modifY = - (rg.velocity.y * this.SpeedModificator * Time.deltaTime * elapsedtime);
 
                 Vector2 revertForce = new Vector2(modifX, modifY);
                 rg.AddForce(revertForce);

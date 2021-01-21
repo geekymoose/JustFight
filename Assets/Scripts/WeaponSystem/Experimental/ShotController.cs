@@ -52,6 +52,13 @@ namespace WeaponSystem
             return this.shotData.Damage.DamageType;
         }
 
+        public float CalculatedValueAfterPowerModification(float value)
+        {
+            // Returns the value with the "power" applied on it.
+            // The power is simply the percent to get of this value.
+            return (this.EffectivePowerInPercent * value) / 100;
+        }
+
         public static void InstantiateShot(WeaponController weaponOrigin, ShotController shotPrefab, Transform origin, float power)
         {
             GameObject newObject = Instantiate(shotPrefab.gameObject, origin);

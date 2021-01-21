@@ -7,14 +7,13 @@ namespace WeaponSystem
     [CreateAssetMenu(fileName = "ShotMovement_FollowTarget", menuName = "ScriptableObjects/WeaponSystem/experimental/ShotMovement_FollowTarget", order = 1)]
     public class ShotMovementFollowTarget : ShotMovement
     {
-        [SerializeField]
         [Tooltip("The movement speed (in Unity units per seconds)")]
-        private float speedInUnitsPerSec;
+        public float SpeedInUnitsPerSec;
 
         public override void Init(ShotController controller, Rigidbody2D rg)
         {
-            // Initial speed
-            rg.velocity = Vector2.up * this.speedInUnitsPerSec;
+            float speed = this.UsesPowerModificator ? controller.CalculatedValueAfterPowerModification(this.SpeedInUnitsPerSec) : this.SpeedInUnitsPerSec;
+            rg.velocity = Vector2.up * speed;
         }
 
         public override void Apply(ShotController controller, Rigidbody2D rg)
@@ -26,8 +25,9 @@ namespace WeaponSystem
                 Transform target = controller.GetTarget();
                 if(target)
                 {
+                    // TODO fix movement (and add power modificator)
                     Vector3 direction = target.position - rg.transform.position;
-                    rg.velocity = direction.normalized * this.speedInUnitsPerSec;
+                    rg.velocity = direction.normalized * this.SpeedInUnitsPerSec;
                     Debug.DrawRay(rg.transform.position, rg.velocity, Color.blue, 0.1f);
                 }
                 else

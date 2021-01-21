@@ -56,7 +56,7 @@ namespace WeaponSystem
 
         public void DoFire()
         {
-            ShotController.InstantiateShot(this, this.weaponData.ShotPrefab, this.weaponEndPoint.transform, this.GetCurrentPower());
+            ShotController.InstantiateShot(this, this.weaponData.ShotControllerPrefab, this.weaponEndPoint.transform, this.GetCurrentPower());
             this.lastFireTime = Time.time;
         }
 

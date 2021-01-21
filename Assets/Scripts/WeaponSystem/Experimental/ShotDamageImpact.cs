@@ -15,13 +15,8 @@ namespace WeaponSystem
             {
                 if(destructible.GetDestructibleData().IsAffectedByDamageType(controller.GetDamageType()))
                 {
-                    float effectiveDamages = this.amountOfDamage;
-                    if(this.UsesPowerModificator)
-                    {
-                        effectiveDamages = (this.amountOfDamage * controller.EffectivePowerInPercent) / 100;
-                    }
-
-                    destructible.TakeDamage(this.amountOfDamage);
+                    float damages = this.UsesPowerModificator ? controller.CalculatedValueAfterPowerModification(this.amountOfDamage) : this.amountOfDamage;
+                    destructible.TakeDamage(damages);
                     GameObject.Destroy(controller.gameObject);
                 }
             }

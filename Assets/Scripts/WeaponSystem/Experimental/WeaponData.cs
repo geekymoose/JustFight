@@ -14,7 +14,7 @@ namespace WeaponSystem
     public class WeaponData : ScriptableObject
     {
         [Tooltip("The shot prefab to instanciate when the weapon fires")]
-        public ShotController ShotPrefab;
+        public ShotController ShotControllerPrefab;
 
         [Tooltip("Firing action to do when the fire key is pressed")]
         public WeaponFireType PressFireType;

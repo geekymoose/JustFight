@@ -10,7 +10,7 @@ namespace WeaponSystem
 
         public override void Apply(ShotController controller, GameObject target)
         {
-            // TODO
+            // TODO add shock
             GameObject.Destroy(controller.gameObject);
         }
     }
