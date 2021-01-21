@@ -17,4 +17,3 @@ MonoBehaviour:
   DamagedByEnemyShots: 1
   DamagedByFriendlyShots: 1
   DamagedByTheShooter: 0
-  PowerEffects: []
