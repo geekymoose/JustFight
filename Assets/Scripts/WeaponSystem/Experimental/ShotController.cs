@@ -50,6 +50,11 @@ namespace WeaponSystem
             return Time.time - this.spawningTime;
         }
 
+        public DamageType GetDamageType()
+        {
+            return this.shotData.Damage.DamageType;
+        }
+
         public List<ShotPowerEffect> GetPowerEffects()
         {
             return this.shotData.PowerEffects;

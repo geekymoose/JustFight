@@ -10,10 +10,9 @@ namespace WeaponSystem
         [Tooltip("List the type of damage that can affect this destructible")]
         public List<DamageType> affectedByDamageType;
 
-        public bool IsAffectedByShot(ShotData shotData)
+        public bool IsAffectedByDamageType(DamageType damageType)
         {
-            return this.affectedByDamageType.Contains(shotData.DamageType);
+            return this.affectedByDamageType.Contains(damageType);
         }
     }
 }
-

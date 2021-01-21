@@ -10,14 +10,10 @@ namespace WeaponSystem
         [Tooltip("Type of movement this shot uses")]
         public ShotMovement MovementType;
 
-        [Tooltip("Amount of damage the shot does on the target")]
-        [Range(1,200)]
-        public float ShotDamageAmount = 1;
+        [Tooltip("The damage behavior to apply on collision")]
+        public ShotDamage Damage;
 
         [Tooltip("Modificators to apply on the shot according to the power")]
         public List<ShotPowerEffect> PowerEffects;
-
-        [Tooltip("Type of damage this shot does on collision")]
-        public DamageType DamageType;
     }
 }
