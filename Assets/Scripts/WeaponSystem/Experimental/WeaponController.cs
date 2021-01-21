@@ -16,6 +16,7 @@ namespace WeaponSystem
         private WeaponFire pressFire;
         private WeaponFire holdFire;
         private WeaponFire releaseFire;
+
         private float lastFireTime = 0;
         private float lastPrepareTime = 0;
 
@@ -35,31 +36,26 @@ namespace WeaponSystem
 
         public void OnPressFire()
         {
-            Debug.Log("OnPressFire()");
             this.pressFire.Apply(this);
         }
 
         public void OnHoldFire()
         {
-            Debug.Log("OnHoldFire()");
             this.holdFire.Apply(this);
         }
 
         public void OnReleaseFire()
         {
-            Debug.Log("OnReleaseFire()");
             this.releaseFire.Apply(this);
         }
 
         public void DoPrepareFire()
         {
-            Debug.Log("DoPrepareFire()");
             this.lastPrepareTime = Time.time;
         }
 
         public void DoFire()
         {
-            Debug.Log("DoFire()");
             this.lastFireTime = Time.time;
             Instantiate(this.weaponData.ShotPrefab); // TODO To update with actual shot
         }
@@ -67,6 +63,21 @@ namespace WeaponSystem
         public bool CanFire()
         {
             return Time.time > this.lastFireTime + this.weaponData.GetTimeBetweenTwoShots();
+        }
+
+        public float GetCurrentPower()
+        {
+            if(this.lastFireTime >= this.lastPrepareTime)
+            {
+                // There is no 'preparing' ongoing
+                return 0;
+            }
+            else
+            {
+                float poweringDuration = Time.time - this.lastPrepareTime;
+                float power = (poweringDuration * 100) / this.weaponData.FullPowerChargingSpeedInSec;
+                return Mathf.Clamp(power, 0, 100); // 0% to 100%
+            }
         }
 
         private WeaponFire NewFireType(WeaponFireType type)

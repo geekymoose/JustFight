@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a5087f23fd69d6b9171a4fce18f23a, type: 3}
   m_Name: Weapon_Gun
   m_EditorClassIdentifier: 
-  ShotPrefab: {fileID: 2272120410403064978, guid: b9b153cc9059c58318f7303443c1b064,
+  ShotPrefab: {fileID: 2272120410403064972, guid: b9b153cc9059c58318f7303443c1b064,
     type: 3}
   PressFireType: 1
   HoldFireType: 2
   ReleaseFireType: 0
   FireRateInShotsPerSec: 1
+  FullPowerChargingSpeedInSec: 2
