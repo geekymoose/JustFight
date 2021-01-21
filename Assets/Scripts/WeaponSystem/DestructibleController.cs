@@ -21,7 +21,6 @@ namespace WeaponSystem
 
         public void TakeDamage(float amount)
         {
-            Debug.Log(amount);
             this.takeDamageEvent.Invoke(amount);
         }
 

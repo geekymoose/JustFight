@@ -1,9 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:Template name="gamePlayerUI" src="gamePlayerUI.uxml" />
-    <ui:VisualElement name="screen" style="height: 432px;">
-        <ui:VisualElement name="healthbar" style="height: 40px; -unity-background-image-tint-color: rgb(130, 81, 81); background-image: none; background-color: rgba(7, 7, 7, 0.59); -unity-text-align: upper-left; align-items: flex-start; flex-direction: row; justify-content: space-between;">
-            <ui:Instance template="gamePlayerUI" name="gamePlayerUI" style="height: 100%; align-items: flex-start;" />
-            <ui:Instance template="gamePlayerUI" name="gamePlayerUI" style="height: 100%; align-items: auto;" />
-        </ui:VisualElement>
-    </ui:VisualElement>
-</ui:UXML>

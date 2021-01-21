@@ -11,7 +11,7 @@ namespace WeaponSystem
         private ShotData shotData;
 
         private Rigidbody2D rg;
-        private GameObject currentTarget;
+        private GameObject currentTarget; // TODO Add target selection
         private float spawningTime = 0f; // Time when the shot was created
 
         public WeaponController WeaponOrigin { get; set;} // Weapon which did the shot
