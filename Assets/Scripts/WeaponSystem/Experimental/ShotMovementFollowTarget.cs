@@ -3,7 +3,8 @@ using UnityEngine.Assertions;
 
 namespace WeaponSystem
 {
-    [CreateAssetMenu(fileName = "ShotMovementFollowTarget", menuName = "ScriptableObjects/WeaponSystem/ShotMovementFollowTarget", order = 1)]
+    // TODO Remove experimental when ready
+    [CreateAssetMenu(fileName = "ShotMovementFollowTarget", menuName = "ScriptableObjects/WeaponSystem/experimental/ShotMovementFollowTarget", order = 1)]
     public class ShotMovementFollowTarget : ShotMovement
     {
         [SerializeField]

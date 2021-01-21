@@ -3,11 +3,12 @@ using UnityEngine.Assertions;
 
 namespace WeaponSystem
 {
-    [CreateAssetMenu(fileName = "ShotMovementForward", menuName = "ScriptableObjects/WeaponSystem/ShotMovementForward", order = 1)]
+    // TODO Remove experimental when ready
+    [CreateAssetMenu(fileName = "ShotMovementForward", menuName = "ScriptableObjects/WeaponSystem/experimental/ShotMovementForward", order = 1)]
     public class ShotMovementForward : ShotMovement
     {
-        [SerializeField]
         [Tooltip("The forward speed (in unity force to apply)")]
+        [SerializeField]
         private float speedInUnityForce;
 
         public override void Apply(ShotController controller, Rigidbody2D rg)

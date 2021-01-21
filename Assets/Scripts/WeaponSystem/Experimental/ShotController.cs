@@ -23,7 +23,7 @@ namespace WeaponSystem
         private void Start()
         {
             this.spawningTime = Time.time;
-            this.rg.velocity = Vector3.up * 10;
+            this.rg.velocity = Vector3.up * 10; // TODO TMP VALUE
         }
 
         private void FixedUpdate()
