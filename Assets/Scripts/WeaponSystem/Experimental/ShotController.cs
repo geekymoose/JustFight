@@ -40,5 +40,14 @@ namespace WeaponSystem
         {
             return Time.time - this.spawningTime;
         }
+
+        public static void InstantiateShot(WeaponController owner, ShotController shotPrefab, Transform origin, float power)
+        {
+            GameObject newObject = Instantiate(shotPrefab.gameObject, origin);
+            ShotController newShotController = newObject.GetComponent<ShotController>();
+            Assert.IsNotNull(newShotController, "Missing component");
+            // TODO to update with speed and power effects
+        }
+
     }
 }
