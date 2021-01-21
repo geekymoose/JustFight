@@ -37,7 +37,6 @@ public class PlayerAttack : MonoBehaviour
     private void Update()
     {
         float power = this.currentWeapon.GetCurrentPower();
-        Debug.Log(power);
         if(power > 0)
         {
             this.weaponDirectionIndicator.SetActive(true);

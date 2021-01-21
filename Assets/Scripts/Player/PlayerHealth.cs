@@ -54,14 +54,18 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        this.effectiveHealth -= amount;
-        this.effectiveHealth = Mathf.Clamp(this.effectiveHealth, 0, this.fullHealth);
-        this.healthSliderUI.value = effectiveHealth / this.fullHealth;
-        Debug.Log("Player takes  " + amount + " damage" + amount + " / remaining: " + this.effectiveHealth);
-        this.playerTakesDamageEvent.Raise();
-        if(this.effectiveHealth == 0)
+        if(this.effectiveHealth > 0)
         {
-            this.Kill();
+            this.effectiveHealth -= amount;
+            this.effectiveHealth = Mathf.Clamp(this.effectiveHealth, 0, this.fullHealth);
+            this.healthSliderUI.value = effectiveHealth / this.fullHealth;
+
+            Debug.Log("Player takes  " + amount + " damage" + amount + " / remaining: " + this.effectiveHealth);
+            this.playerTakesDamageEvent.Raise();
+            if(this.effectiveHealth == 0)
+            {
+                this.Kill();
+            }
         }
     }
 
