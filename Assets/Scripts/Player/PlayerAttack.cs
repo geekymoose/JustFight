@@ -1,26 +1,27 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
+using WeaponSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField]
     [Tooltip("GameObject uses to indicate the weapon direction and reloading power")]
+    [SerializeField]
     private GameObject weaponDirectionIndicator; // This is hacky
 
-    [SerializeField]
     [Tooltip("Weapon used for slot 1")]
-    private Weapon weapon1;
-
     [SerializeField]
+    private WeaponController weapon1;
+
     [Tooltip("Weapon used for slot 2")]
-    private Weapon weapon2;
-
     [SerializeField]
-    [Tooltip("Weapon used for slot 3")]
-    private Weapon weapon3;
+    private WeaponController weapon2;
 
-    private Weapon currentWeapon; // Currently used weapon
+    [Tooltip("Weapon used for slot 3")]
+    [SerializeField]
+    private WeaponController weapon3;
+
+    private WeaponController currentWeapon; // Currently used weapon
 
     private void Awake()
     {
@@ -35,6 +36,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        /*
+        // TODO Re-integrate the indicator
         if(this.currentWeapon.IsChargingPower())
         {
             this.weaponDirectionIndicator.SetActive(true);
@@ -46,16 +49,17 @@ public class PlayerAttack : MonoBehaviour
         {
             this.weaponDirectionIndicator.SetActive(false);
         }
+        */
     }
 
     private void PressFire()
     {
-        this.currentWeapon.PressFire();
+        this.currentWeapon.OnPressFire();
     }
 
     private void ReleaseFire()
     {
-        this.currentWeapon.ReleaseFire();
+        this.currentWeapon.OnReleaseFire();
     }
 
     public void OnInputFire1(InputAction.CallbackContext context)

@@ -1,34 +1,39 @@
 using UnityEngine;
-using UnityEngine.Assertions;
 
-[CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObjects/WeaponSystem/Weapon", order = 1)]
-public class WeaponData : ScriptableObject
+namespace WeaponSystem
 {
-    [Tooltip("The prefab to instanciate when the weapon fires")]
-    public ShotController ShotControllerPrefab;
-
-    [Range(0, 5)]
-    [Tooltip("Time it takes for this weapon to reload before next shoot (in seconds)")]
-    public float ReloadSpeedInSec = 1.0f;
-
-    [Tooltip("Type of fire this weapon uses")]
-    public WeaponFiringTypeEnum FiringType = WeaponFiringTypeEnum.CHARGE_THEN_FIRE;
-
-    [Range(0, 5)]
-    [Tooltip("This is the time it takes to be fully loaded")]
-    public float FullPowerChargingSpeedInSec = 0.5f;
-
-    [Range(0, 100)]
-    [Tooltip("Minimum power required to fire a shot (in % of the max power required)")]
-    public float MinPowerRequiredInPercent = 30.0f;
-
-    private void Awake()
+    public enum WeaponFireType
     {
-        Assert.IsNotNull(this.ShotControllerPrefab, "Missing asset");
+        INSTANT_FIRE_ENUM,
+        PREPARE_FIRE_ENUM,
+        NOTHIN_ENUM,
     }
 
-    public bool IsEnoughPowerToFire(float powerPercentCharge)
+    [CreateAssetMenu(fileName = "Weapon", menuName = "ScriptableObjects/WeaponSystem/Weapon", order = 1)]
+    public class WeaponData : ScriptableObject
     {
-        return powerPercentCharge >= this.MinPowerRequiredInPercent;
+        [Tooltip("The shot prefab to instanciate when the weapon fires")]
+        public ShotController ShotControllerPrefab;
+
+        [Tooltip("Firing action to do when the fire key is pressed")]
+        public WeaponFireType PressFireType;
+
+        [Tooltip("Firing action to do when the fire key is hold")]
+        public WeaponFireType HoldFireType;
+
+        [Tooltip("Firing action to do when the fire key is released")]
+        public WeaponFireType ReleaseFireType;
+
+        [Tooltip("Number of shots per seconds the weapon can fire")]
+        public int FireRateInShotsPerSec = 1;
+
+        [Tooltip("Time it takes for the weapon to have 100% of its power (in seconds)")]
+        [Range(0, 5)]
+        public float FullPowerChargingSpeedInSec = 1f;
+
+        public float GetTimeBetweenTwoShots()
+        {
+            return 1 / this.FireRateInShotsPerSec;
+        }
     }
 }

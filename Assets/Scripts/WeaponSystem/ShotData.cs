@@ -1,32 +1,24 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public enum ShotMovementType
+namespace WeaponSystem
 {
-    HITSCAN,
-    MISSILE,
-    PROJECTILE,
-}
+    [CreateAssetMenu(fileName = "Shot", menuName = "ScriptableObjects/WeaponSystem/Shot", order = 1)]
+    public class ShotData : ScriptableObject
+    {
+        [Tooltip("Type of movement this shot uses")]
+        public ShotMovement MovementType;
 
-[CreateAssetMenu(fileName = "Shot", menuName = "ScriptableObjects/WeaponSystem/Shot", order = 1)]
-public class ShotData : ScriptableObject
-{
-    [Tooltip("Type of momement the shot uses")]
-    public ShotMovementType ShotMovementType = ShotMovementType.PROJECTILE;
+        [Tooltip("The damage behavior to apply on collision")]
+        public ShotDamage Damage;
 
-    [Range(1,30)]
-    [Tooltip("Shot speed in Unity units (not used if Hitscan)")]
-    public float ShotMovementSpeed = 5;
+        [Tooltip("If false, this shot does not impact with enemy shots")]
+        public bool DamagedByEnemyShots = false;
 
-    [Range(1,200)]
-    [Tooltip("Amount of damage the shot does on the target")]
-    public float ShotDamageAmount = 1;
+        [Tooltip("If false, this shot does not impact with friendly shots")]
+        public bool DamagedByFriendlyShots = false;
 
-    [Tooltip("If false, this shot passes through enemy shots (no collision)")]
-    public bool collidesWithEnemyShots = false;
-
-    [Tooltip("If false, this shot passes through friendly shots (no collision)")]
-    public bool collidesWithFriendlyShots = false;
-
-    [Tooltip("If false, this shot passes through friends")]
-    public bool collidesWithFriends = false;
+        [Tooltip("If false, this shot does not impact with the shooter")]
+        public bool DamagedByTheShooter = false;
+    }
 }

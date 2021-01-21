@@ -1,14 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Destructible", menuName = "ScriptableObjects/WeaponSystem/Destructible", order = 1)]
-public class DestructibleData : ScriptableObject
+namespace WeaponSystem
 {
-    [Tooltip("List of shots that can destruct this element")]
-    public List<ShotData> affectedByShots;
-
-    public bool IsAffectedByShot(ShotData shotData)
+    [CreateAssetMenu(fileName = "Destructible", menuName = "ScriptableObjects/WeaponSystem/Destructible", order = 1)]
+    public class DestructibleData : ScriptableObject
     {
-        return this.affectedByShots.Contains(shotData);
+        [Tooltip("List the type of damage that can affect this destructible")]
+        public List<DamageType> affectedByDamageType;
+
+        public bool IsAffectedByDamageType(DamageType damageType)
+        {
+            return this.affectedByDamageType.Contains(damageType);
+        }
     }
 }

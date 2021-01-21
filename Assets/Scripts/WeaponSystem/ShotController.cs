@@ -2,129 +2,117 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class ShotController : MonoBehaviour
+namespace WeaponSystem
 {
-    [SerializeField]
-    [Tooltip("The data used for this shot")]
-    private ShotData ShotData;
-
-    [SerializeField]
-    [Tooltip("List of effects to apply on impact")]
-    private List<GameObject> effectsOnImpact;
-
-    public Weapon WeaponOwner { get; set;} // The one who did the shot
-
-    private void Start()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class ShotController : MonoBehaviour
     {
-        Assert.IsNotNull(this.ShotData, "Missing asset");
-        //Assert.IsNotNull(this.WeaponOwner, "Missing asset"); // TODO
-    }
+        [SerializeField]
+        private ShotData shotData;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destructible destructible = collision.gameObject.GetComponent<Destructible>();
-        ShotController shotController = collision.gameObject.GetComponent<ShotController>();
+        private Rigidbody2D rg;
+        private GameObject currentTarget;
+        private float spawningTime = 0f; // Time when the shot was created
 
-        // Special case of collision with another shot
-        if(shotController)
+        public WeaponController WeaponOrigin { get; set;} // Weapon which did the shot
+        public float EffectivePowerInPercent {get; set; }
+
+        private void Awake()
         {
-            bool isFriendlyShot = shotController.WeaponOwner == this.WeaponOwner;
-            bool isEnemyShot = shotController.WeaponOwner != this.WeaponOwner;
+            this.rg = this.GetComponent<Rigidbody2D>();
 
-            bool applyCollision = false;
-            if(isFriendlyShot && this.ShotData.collidesWithFriendlyShots)
-            {
-                applyCollision = true;
-            }
-            else if(isEnemyShot && this.ShotData.collidesWithEnemyShots)
-            {
-                applyCollision = true;
-            }
-
-            if(!(applyCollision && destructible))
-            {
-                // Hack: bypass the collision process
-                return;
-            }
+            Assert.IsNotNull(this.rg, "Missing asset");
+            Assert.IsNotNull(this.shotData, "Missing asset");
+            Assert.IsNotNull(this.shotData.MovementType, "Missing asset");
         }
 
-        if(destructible)
+        private void Start()
         {
-            DestructibleData destructibleData = destructible.GetDestructibleData();
-            Assert.IsNotNull(destructibleData, "Missing asset"); // Internal error (DestructibleData required)
-            if(destructibleData)
+            this.spawningTime = Time.time;
+            this.shotData.MovementType.Init(this, this.rg);
+        }
+
+        private void FixedUpdate()
+        {
+            this.shotData.MovementType.Apply(this, this.rg);
+        }
+
+        public Transform GetTarget()
+        {
+            return (this.currentTarget) ? this.currentTarget.transform : null;
+        }
+
+        public float GetLifetimeDuration()
+        {
+            return Time.time - this.spawningTime;
+        }
+
+        public DamageType GetDamageType()
+        {
+            return this.shotData.Damage.DamageType;
+        }
+
+        public float CalculatedValueAfterPowerModification(float value)
+        {
+            // Returns the value with the "power" applied on it.
+            // The power is simply the percent to get of this value.
+            return (this.EffectivePowerInPercent * value) / 100;
+        }
+
+        public static void InstantiateShot(WeaponController weaponOrigin, ShotController shotPrefab, Transform origin, float power)
+        {
+            GameObject newObject = Instantiate(shotPrefab.gameObject, origin);
+            ShotController newShotController = newObject.GetComponent<ShotController>();
+            Assert.IsNotNull(newShotController, "Missing component");
+
+            newShotController.WeaponOrigin = weaponOrigin;
+            newShotController.EffectivePowerInPercent = power;
+        }
+
+        // TODO Add on trigger collisions
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            // Check for special case with collision is actually the one who did the shot.
+            // TODO Update with a better implementation (I don't know it the cost of the GetComponentsInChildren is that expensive)
+            // This requires that collision is in the parent (or same gameobject)
+            WeaponController[] weaponControllers = collision.gameObject.GetComponentsInChildren<WeaponController>();
+            foreach(WeaponController weapon in weaponControllers)
             {
-                bool collidesWithOwner = (destructible.gameObject == this.WeaponOwner.gameObject);
-                if(collidesWithOwner)
+                if(weapon.gameObject == this.WeaponOrigin.gameObject)
                 {
-                    if(this.ShotData.collidesWithFriends)
+                    if(this.shotData.DamagedByTheShooter)
                     {
-                        this.ApplyOnImpact();
+                        this.shotData.Damage.Apply(this, collision.gameObject);
+                    }
+                    else
+                    {
+                        // Don't do anything else
+                        return;
                     }
                 }
-                else if(destructibleData.IsAffectedByShot(this.ShotData))
+            }
+
+            // Special case of collision with another shot
+            ShotController collisionShotController = collision.gameObject.GetComponent<ShotController>();
+            if(collisionShotController)
+            {
+                bool isFriendlyShot = collisionShotController.WeaponOrigin == this.WeaponOrigin;
+                bool isEnemyShot = !isFriendlyShot;
+
+                if(isFriendlyShot && this.shotData.DamagedByFriendlyShots)
                 {
-                    destructible.TakeDamage(this.ShotData.ShotDamageAmount);
-                    this.ApplyOnImpact();
+                    this.shotData.Damage.Apply(this, collision.gameObject);
                 }
-                else
+                else if(isEnemyShot && this.shotData.DamagedByEnemyShots)
                 {
-                    this.ApplyOnImpact();
+                    this.shotData.Damage.Apply(this, collision.gameObject);
                 }
             }
-        }
-        else
-        {
-            this.ApplyOnImpact();
-        }
-    }
-
-    private void ApplyOnImpact()
-    {
-        foreach (GameObject effect in this.effectsOnImpact)
-        {
-            Instantiate(effect, this.gameObject.transform.position, this.gameObject.transform.rotation);
-        }
-        GameObject.Destroy(this.gameObject);
-    }
-
-    public void SetShotData(ShotData shotData)
-    {
-        this.ShotData = shotData;
-    }
-
-    public void SetShotOwner(Weapon owner)
-    {
-        this.WeaponOwner = owner;
-    }
-
-    public static void InstantiateShot(Weapon owner, ShotController shotPrefab, Transform origin, float power)
-    {
-        GameObject newObject = Instantiate(shotPrefab.gameObject, origin);
-        ShotController newShotController = newObject.GetComponent<ShotController>();
-        Assert.IsNotNull(newShotController, "Missing component");
-        ShotData shotData = shotPrefab.ShotData;
-        float speed = shotData.ShotMovementSpeed * (power / 100); // power in %, fall back to 0-1
-
-        newShotController.SetShotData(shotData);
-        newShotController.SetShotOwner(owner);
-
-        switch(shotData.ShotMovementType)
-        {
-            case ShotMovementType.MISSILE:
-                ShotMovementMissile moveM = newObject.AddComponent<ShotMovementMissile>();
-                moveM.SetCurrentSpeed(speed);
-                break;
-            case ShotMovementType.PROJECTILE:
-                ShotMovementProjectile moveP = newObject.AddComponent<ShotMovementProjectile>();
-                moveP.SetCurrentSpeed(speed);
-                break;
-            case ShotMovementType.HITSCAN:
-                // Nothing for now
-                break;
-            default:
-                Assert.IsTrue(false, "ShotMovementType not implemented");
-                break;
+            else
+            {
+                this.shotData.Damage.Apply(this, collision.gameObject);
+            }
         }
     }
 }
