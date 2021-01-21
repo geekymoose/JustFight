@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementType: {fileID: 11400000, guid: 81aed7188d660713daa938b76e1eb0c9, type: 2}
+  shotData: {fileID: 11400000, guid: caeb45b5c782a08bca8ba1a48568393a, type: 2}
 --- !u!1 &2272120411143124457
 GameObject:
   m_ObjectHideFlags: 0
