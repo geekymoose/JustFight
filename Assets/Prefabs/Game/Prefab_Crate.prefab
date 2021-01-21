@@ -94,6 +94,9 @@ GameObject:
   - component: {fileID: 6514404546101586344}
   - component: {fileID: -6872556981821198329}
   - component: {fileID: 1710696509}
+  - component: {fileID: 4916523596700243400}
+  - component: {fileID: 5433784558238134382}
+  - component: {fileID: 4815075081138151956}
   m_Layer: 0
   m_Name: Prefab_Crate
   m_TagString: Untagged
@@ -163,3 +166,62 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &4916523596700243400
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6514404546101586351}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0988114a766e82d1db005fd57a8a63e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5433784558238134382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6514404546101586351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8daf7c831fe6ff4e9b643e26b3486ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructibleData: {fileID: 11400000, guid: f2fc3388ac4130c4bacb2627d6be2480, type: 2}
+  takeDamageEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4815075081138151956}
+        m_TargetAssemblyTypeName: Crate, Assembly-CSharp
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Destroy
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4815075081138151956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6514404546101586351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4648815af290bdaf4be545ed600a3746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
