@@ -15,5 +15,5 @@ MonoBehaviour:
   MovementType: {fileID: 11400000, guid: 9b6e1e9cdced8cad6ae671e1c5eef21c, type: 2}
   Damage: {fileID: 11400000, guid: 3e6c7564bb6dbe74db9a627a3ada088d, type: 2}
   DamagedByEnemyShots: 1
-  DamagedByFriendlyShots: 1
+  DamagedByFriendlyShots: 0
   DamagedByTheShooter: 0
